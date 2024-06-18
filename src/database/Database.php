@@ -7,7 +7,7 @@ class Database
     private function __construct()
     {
         if (is_null(self::$conn)) {
-            self::$conn = new PDO(dsn: 'sqlite:financas.db', options:[
+            self::$conn = new PDO(dsn: 'sqlite:Financas.db', options:[
                 PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,   
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]);
