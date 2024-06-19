@@ -27,7 +27,7 @@
             </div>
 
             <div class="campo">
-                <input placeholder="Valor:" type="number" id="valor" name="valor"  required>
+                <input placeholder="Valor:" type="number" id="valor" name="valor" step="0.01" maxlength="20"  required onkeyup="MascaraValor()">
             </div>
 
             <div class="campo">
@@ -82,6 +82,6 @@
         </table>
     </div>
 
-    <script src="src/public/app.js"></script>
+    <script src="/src/public/app.js"></script>
 </body>
 </html>
