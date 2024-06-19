@@ -44,18 +44,24 @@ async function populateSelect() {
 // Chamada da função para popular o seletor ao carregar a página
 window.onload = populateSelect;
 
-// colocar máscara para o campo valor
+function MascaraValor() {
+    let input = document.getElementById("valor");
+    VerificaValor(input);
+}
 
-// function formatCurrency(value) {
-//     // value = value.replace(/\D/g, ''); // Remove caracteres não numéricos
-//     value = (value / 100).toFixed(2) + ''; // Divide por 100 para transformar em decimal e fixa duas casas decimais
-//     value = value.replace(".", ","); // Substitui ponto por vírgula
-//     value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); // Adiciona pontos a cada 3 dígitos
-//     return value;
-// }
+function VerificaValor(Num) {
+    if (Num.value.length <= 0) {
+        Num.value = "0.000";
+    }
+    let padrao = Num.value;
+    padrao = padrao + "";
+    padrao = parseInt(padrao.replace(/[\D]+/g, ""));
+    padrao = padrao + "";
+    padrao = padrao.replace(/([0-9]{2})$/g, ".$1");
+    if (padrao.length > 4) {
+        padrao = padrao.replace(/([0-9]{2}).([0-9]{3}$)/g, ".$1.$2");
+    }
+    Num.value = padrao;
+}
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     document.getElementById('valor').addEventListener('input', function (e) {
-//         e.target.value = formatCurrency(e.target.value);
-//     });
-// });
+
