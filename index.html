@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Gestor Financeiro</title>
+</head>
+
+<header>
+    
+</header>
+<body>
+    <h1 id="titulo">Gestor Financeiro</h1>
+
+    <dialog id="Popup">
+    <div id="formulario" class="popup">
+        <h2 style="margin-left: 30%;">Cadastro de Transações</h2>
+        <form action="#">
+            
+            <div class="campo">
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="tipo">
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <input placeholder="Valor:" type="number" id="valor" name="valor"  required>
+            </div>
+
+            <div class="campo">
+                <!-- <label for="data">Data:</label> -->
+                <input type="date" id="data" name="data" placeholder="Data:" required>
+            </div>
+            
+
+            <div class="campo">
+                <!-- <label for="descricao">Descrição:</label> -->
+                <input type="text" id="descricao" name="descricao" placeholder="Descrição (opcional)">
+            </div>
+
+            <div class="campo">
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="alimentacao">Alimentação</option>
+                    <option value="transporte">Transporte</option>
+                    <option value="educacao">Educação</option>
+                    <option value="cuidados_pessoais">Cuidados Pessoais</option>
+                    <option value="mercado">Mercado</option>
+                    <option value="lazer">Lazer</option>
+                </select required>
+            </div>
+            <div>
+                <button type="button" id="cadastrar">Cadastrar</button>
+                <button type="button" id="cancelar" onclick="CancelarPopup()" >Cancelar</button>
+            </div>
+        </form>
+        </dialog>
+
+        <div>
+            <button id="openPopup" onclick="ExibirPopup()">Adicionar Transação</button>
+        </div>
+
+    </div>
+
+    <div id="historico">
+        <h2>Histórico de Transações</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
