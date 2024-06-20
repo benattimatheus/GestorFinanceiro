@@ -72,11 +72,12 @@ function preencherSelectMes() {
 }
 
 async function populateTable(mes) {
-    const Caminho = '/src/controllers/app.php?mes=' + mes;
+    const Caminho = '/src/controllers/RequestTabela.php'
     try {
-        const resposta = await fetch(Caminho);
-        const dados = await resposta.json();
-        console.log(dados);
+        const respostaT = await fetch(Caminho);
+        const dadosT = await respostaT.json();
+        // console.log(dadosT);
+        // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         const tabela = document.querySelector('#historico tbody');
         tabela.innerHTML = '';
@@ -90,8 +91,8 @@ async function populateTable(mes) {
             row.insertCell(4).textContent = item.categoria;
         };
 
-        dados.receitas.forEach(item => adicionarLinha('Receita', item));
-        dados.despesas.forEach(item => adicionarLinha('Despesa', item));
+        dadosT.receitas.forEach(item => adicionarLinha('Receita', item));
+        dadosT.despesas.forEach(item => adicionarLinha('Despesa', item));
     } catch (error) {
         console.error('Erro:', error);
         const tabela = document.querySelector('#historico tbody');
