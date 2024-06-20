@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/704dd92f4c.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-U1W1KU6MKpug6j56e9ibq7oDY91v1drD3XKoMoZfkeQ7U166q9nN03VPqZ9zr3n" crossorigin="anonymous">
     <link rel="stylesheet" href="src/public/style.css">
+    <link rel="stylesheet" href="src/public/styleSideBar.css">
     <title>Gestor Financeiro</title>
 </head>
 
@@ -13,6 +16,45 @@
 <body>
     <h1 id="titulo">Gestor Financeiro</h1>
 
+
+
+
+
+        <div class="sidebar">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-home"></i>
+              <span class="sidebar-text">Início</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-chart-line"></i>
+              <span class="sidebar-text">Gráficos</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-users"></i>
+              <span class="sidebar-text">Usuários</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-cog"></i>
+              <span class="sidebar-text">Configurações</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+
+
+    
     <dialog id="Popup">
     <div id="formulario" class="popup">
         <h2>Cadastro de Transações</h2>
