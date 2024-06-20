@@ -1,4 +1,7 @@
 <?php
+
+require_once __DIR__ .'/../database/Database.php';
+
 class OpcoesController
 {
     public static function getOpcoes()
@@ -7,17 +10,17 @@ class OpcoesController
             // Obtendo a conexão com o banco de dados usando a classe Database
             $pdo = Database::getConn();
 
-            // Query para selecionar os dados
-            $stmt = $pdo->prepare("SELECT id, nome FROM opcoes");
+            
+            $stmt = $pdo->prepare("SELECT categoria FROM categoria");
             $stmt->execute();
 
-            // Obtendo os resultados
+            
             $opcoes = $stmt->fetchAll();
 
-            // Transformando os resultados em JSON e respondendo a requisição
+            
             echo json_encode($opcoes);
         } catch (PDOException $e) {
-            // Em caso de erro, retornar uma mensagem de erro
+            
             echo json_encode(['error' => 'Erro ao conectar ao banco de dados: ' . $e->getMessage()]);
         }
     }
