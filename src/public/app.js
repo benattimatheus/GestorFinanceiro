@@ -78,7 +78,7 @@ async function populateTable(mes) {
             row.insertCell(1).textContent = item.valor;
             row.insertCell(2).textContent = item.data;
             row.insertCell(3).textContent = item.descricao;
-            row.insertCell(4).textContent = item.categoria;
+            row.insertCell(4).textContent = item.categoria_nome;
         };
 
         dadosT.receitas.forEach(item => adicionarLinha('Receita', item));

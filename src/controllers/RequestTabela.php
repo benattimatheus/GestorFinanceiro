@@ -11,12 +11,22 @@ class RequestTabela {
             $pdo = Database::getConn();
             $mesFormatado = str_pad($mes, 2, '0', STR_PAD_LEFT);
 
-            $stmtReceitas = $pdo->prepare("SELECT * FROM receitas WHERE data LIKE :mes");
+            $stmtReceitas = $pdo->prepare("
+                SELECT receitas.*, categoria.categoria AS categoria_nome
+                FROM receitas
+                JOIN categoria ON receitas.categoria = categoria.id
+                WHERE receitas.data LIKE :mes
+            ");
             $stmtReceitas->bindValue(':mes', '%/' . $mesFormatado . '/%', PDO::PARAM_STR);
             $stmtReceitas->execute();
             $receitas = $stmtReceitas->fetchAll(PDO::FETCH_ASSOC);
 
-            $stmtDespesas = $pdo->prepare("SELECT * FROM despesas WHERE data LIKE :mes");
+            $stmtDespesas = $pdo->prepare("
+                SELECT despesas.*, categoria.categoria AS categoria_nome
+                FROM despesas
+                JOIN categoria ON despesas.categoria = categoria.id
+                WHERE despesas.data LIKE :mes
+            ");
             $stmtDespesas->bindValue(':mes', '%/' . $mesFormatado . '/%', PDO::PARAM_STR);
             $stmtDespesas->execute();
             $despesas = $stmtDespesas->fetchAll(PDO::FETCH_ASSOC);
