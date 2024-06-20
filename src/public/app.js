@@ -14,7 +14,7 @@ async function populateSelect() {
         
         select.innerHTML = '';
 
-        data.forEach(item => {
+        dados.forEach(item => {
             const option = document.createElement('option');
             option.value = item.value; // Assumindo que o JSON tem um campo "value"
             option.text = item.categoria; // Assumindo que o JSON tem um campo "text"
