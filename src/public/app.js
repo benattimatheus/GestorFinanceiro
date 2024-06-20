@@ -64,12 +64,10 @@ function preencherSelectMes() {
 }
 
 async function populateTable(mes) {
-    const Caminho = '/src/controllers/RequestTabela.php'
+    const Caminho = `/src/controllers/RequestTabela.php?mes=${mes}`;  
     try {
         const respostaT = await fetch(Caminho);
         const dadosT = await respostaT.json();
-        // console.log(dadosT);
-        // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         const tabela = document.querySelector('#historico tbody');
         tabela.innerHTML = '';
