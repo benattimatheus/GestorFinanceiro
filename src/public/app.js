@@ -1,4 +1,12 @@
-// -------------------------Função De Resquest------------------------------
+// -------------------------Função onload------------------------------
+
+
+window.onload = function() {
+    populateSelect();
+    preencherSelectMes();
+};
+
+// -------------------------Função De Request------------------------------
 
 const Caminho = '/src/controllers/app.php';
 async function populateSelect() {
@@ -14,7 +22,7 @@ async function populateSelect() {
         
         select.innerHTML = '';
 
-        data.forEach(item => {
+        dados.forEach(item => {
             const option = document.createElement('option');
             option.value = item.value; // Assumindo que o JSON tem um campo "value"
             option.text = item.categoria; // Assumindo que o JSON tem um campo "text"
@@ -26,12 +34,8 @@ async function populateSelect() {
         select.innerHTML = '<option value="" disabled>Erro ao carregar opções</option>';
     }
 }
-window.onload = populateSelect;
 
-
-
-// -------------------------Função para a tabela------------------------------
-
+// -------------------------Função para tabela------------------------------
 
 function getMesAtual() {
     const dataAtual = new Date();
@@ -52,17 +56,48 @@ function preencherSelectMes() {
 
     nomeMeses.forEach((mes, index) => {
         const option = document.createElement('option');
-        option.value = index;
+        option.value = index + 1; 
         option.textContent = mes;
         selectMes.appendChild(option);
     });
 
-    const mesAtual = getMesAtual().mes;
+    const mesAtual = getMesAtual().mes + 1; 
     selectMes.value = mesAtual;
+
+    selectMes.addEventListener('change', () => {
+        populateTable(selectMes.value);
+    });
+
+    populateTable(mesAtual);
 }
 
-preencherSelectMes();
+async function populateTable(mes) {
+    const Caminho = '/src/controllers/app.php?mes=' + mes;
+    try {
+        const resposta = await fetch(Caminho);
+        const dados = await resposta.json();
+        console.log(dados);
 
+        const tabela = document.querySelector('#historico tbody');
+        tabela.innerHTML = '';
+
+        const adicionarLinha = (tipo, item) => {
+            const row = tabela.insertRow();
+            row.insertCell(0).textContent = tipo;
+            row.insertCell(1).textContent = item.valor;
+            row.insertCell(2).textContent = item.data;
+            row.insertCell(3).textContent = item.descricao;
+            row.insertCell(4).textContent = item.categoria;
+        };
+
+        dados.receitas.forEach(item => adicionarLinha('Receita', item));
+        dados.despesas.forEach(item => adicionarLinha('Despesa', item));
+    } catch (error) {
+        console.error('Erro:', error);
+        const tabela = document.querySelector('#historico tbody');
+        tabela.innerHTML = '<tr><td colspan="5">Erro ao carregar dados</td></tr>';
+    }
+}
 
 // -------------------------Função HTML------------------------------
 function MascaraValor() {
