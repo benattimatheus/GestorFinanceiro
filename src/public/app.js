@@ -8,23 +8,15 @@ window.onload = function() {
 
 // -------------------------Função De Request------------------------------
 
-const Caminho = '/src/controllers/app.php';
+const Caminho = '/src/controllers/RequestPopulateSelector.php';
 async function populateSelect() {
     try {
-        
         const resposta = await fetch(Caminho);
-
-        
         const dados = await resposta.json();
-        console.log(dados);
-        
         const select = document.getElementById('categoria');
-        
         select.innerHTML = '';
-
         dados.forEach(item => {
             const option = document.createElement('option');
-            option.value = item.value; // Assumindo que o JSON tem um campo "value"
             option.text = item.categoria; // Assumindo que o JSON tem um campo "text"
             select.appendChild(option);
         });
