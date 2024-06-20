@@ -1,0 +1,72 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 100%;
+    background-color: #333;
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar .sidebar-title {
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+  }
+
+ 
+
+  .sidebar .sidebar-text {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: 190px;
+    font-family: 'Titillium Web', sans-serif;
+}
+  
+  .sidebar:hover .sidebar-text {
+    display: block; /* Mostra os textos ao passar o mouse */
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .sidebar i {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  
+  .sidebar:hover {
+    width: 200px;
+  }
+
+  
+  .sidebar:hover i {
+    /* transform: scale(1.5); */
+    float: right;
+    position:relative;
+    margin-top: 10%;
+
+  }
+  
+  .sidebar.hovering .sidebar-text {
+    opacity: 1; /* Mostra os textos com opacidade total */
+    transform: translateX(0); /* Move os textos para a direita */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animação suave */
+  }
