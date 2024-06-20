@@ -28,6 +28,42 @@ async function populateSelect() {
 }
 window.onload = populateSelect;
 
+
+
+// -------------------------Função para a tabela------------------------------
+
+
+function getMesAtual() {
+    const dataAtual = new Date();
+    const mesAtual = dataAtual.getMonth();
+    const nomeMeses = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+    return { mes: mesAtual, nome: nomeMeses[mesAtual] };
+}
+
+function preencherSelectMes() {
+    const selectMes = document.getElementById('Mes');
+    const nomeMeses = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+
+    nomeMeses.forEach((mes, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = mes;
+        selectMes.appendChild(option);
+    });
+
+    const mesAtual = getMesAtual().mes;
+    selectMes.value = mesAtual;
+}
+
+preencherSelectMes();
+
+
 // -------------------------Função HTML------------------------------
 function MascaraValor() {
     let input = document.getElementById("valor");
