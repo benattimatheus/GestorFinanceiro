@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fffff0;
+}
+
+header {
+  background-color: #3d2b1f;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3d2b1f;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 30rem;
+}
+
+.popup h2 {
+  margin-top: 0;
+}
+
+.popup.campo {
+  margin-bottom: 1rem;
+}
+
+.popup label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.popup input,.popup select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.popup button {
+  background-color: #3d2b1f;
+  color: #3d2b1f;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.popup button:hover {
+  background-color: #3d2b1f;
+}
+
+.popup button:focus {
+  outline: none;
+}
+
+/* Historico Styles */
+
+#historico {
+  margin: 2rem;
+}
+
+#historico table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#historico th, #historico td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+#historico th {
+  background-color: #3d2b1f;
+  color: #fff;
+}
+
+#historico tr:nth-child(even) {
+  background-color: #3d2b1f;
+}
+
+/* Open Popup Button Styles */
+
+#openPopup {
+  background-color: #3d2b1f;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#openPopup:hover {
+  background-color: #444;
+}
+
+#openPopup:focus {
+  outline: none;
+}
