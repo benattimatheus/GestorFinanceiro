@@ -8,7 +8,7 @@ class RequestPopulateSelector
     {
         try {
             $pdo = Database::getConn();
-            $stmt = $pdo->prepare("SELECT categoria FROM categoria");
+            $stmt = $pdo->prepare("SELECT categoria, tipo FROM categoria"); //Adicionado o 'Tipo" no select do banco
             $stmt->execute();
             $opcoes = $stmt->fetchAll();
             echo json_encode($opcoes);

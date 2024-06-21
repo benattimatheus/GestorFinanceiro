@@ -62,9 +62,10 @@
             
             <div class="campo">
                 <label for="tipo">Tipo:</label>
-                <select id="tipo" name="tipo">
-                    <option value="receita">Receita</option>
-                    <option value="despesa">Despesa</option>
+                <select id="tipo" name="tipo" onchange="populateSelect()"> /
+                  <!-- Foi mudado os values das opções e adicionado o evento onchange para filtrar as categorias-->
+                    <option value="1">Receita</option>
+                    <option value="0">Despesa</option>
                 </select>
             </div>
 
@@ -86,12 +87,8 @@
             <div class="campo">
                 <label for="categoria">Categoria:</label>
                 <select id="categoria" name="categoria" required>
-                    <option value="alimentacao">Alimentação</option>
-                    <option value="transporte">Transporte</option>
-                    <option value="educacao">Educação</option>
-                    <option value="cuidados_pessoais">Cuidados Pessoais</option>
-                    <option value="mercado">Mercado</option>
-                    <option value="lazer">Lazer</option>
+                  <!-- Foi retirado opções fixas e agora só são puxadas a opções do banco -->
+                  <option value="" disabled selected>Selecione uma categoria</option>
                 </select required>
             </div>
             <div>

@@ -2,23 +2,29 @@
 
 
 window.onload = function() {
-    populateSelect();
+    populateSelect()
     preencherSelectMes();
 };
 
 // -------------------------Função De Request------------------------------
 
-const Caminho = '/src/controllers/RequestPopulateSelector.php';
+
 async function populateSelect() {
+    const Caminho = '/src/controllers/RequestPopulateSelector.php';
     try {
         const resposta = await fetch(Caminho);
         const dados = await resposta.json();
         const select = document.getElementById('categoria');
-        select.innerHTML = '';
+        const tiposelecionado = document.getElementById('tipo');
+        select.innerHTML = '<option value="" disabled selected>Selecione uma categoria</option>';
         dados.forEach(item => {
-            const option = document.createElement('option');
-            option.text = item.categoria; // Assumindo que o JSON tem um campo "text"
-            select.appendChild(option);
+            let DadoBanco_convertido = Number(item.tipo);
+            let TipoSelecionado = Number(tiposelecionado.value);  //Receita (1) ou Despesa (0)
+            if (DadoBanco_convertido === TipoSelecionado) {
+                const option = document.createElement('option');
+                option.text = item.categoria;
+                select.appendChild(option);
+            }
         });
     } catch (error) {
         console.error('Erro:', error);
@@ -26,6 +32,7 @@ async function populateSelect() {
         select.innerHTML = '<option value="" disabled>Erro ao carregar opções</option>';
     }
 }
+
 
 // -------------------------Função para tabela------------------------------
 
@@ -122,5 +129,3 @@ function Cancelar(){
     let cancelar = document.getElementById("Popup");
     cancelar.close();
 }
-
-
