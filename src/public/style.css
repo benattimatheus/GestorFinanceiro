@@ -96,3 +96,66 @@ h1[id="titulo"]{
         padding: 8px;
     }
 }
+
+
+/* Foi adicionado CSS para os campos receita despesa e saldo */
+
+.valores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.valores>div {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+.saldo .icon {
+    background-color: #f6e5a3;
+    color: #d4a017;
+}
+
+.Receita .icon {
+    background-color: #b5e7a0;
+    color: #4caf50;
+}
+
+.Despesa .icon {
+    background-color: #f2b7b7;
+    color: #e53935;
+}
+
+.texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.texto .value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.texto .label {
+    font-size: 14px;
+    color: #777;
+}

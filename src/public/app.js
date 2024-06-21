@@ -79,6 +79,9 @@ async function populateTable(mes) {
         const tabela = document.querySelector('#historico tbody');
         tabela.innerHTML = '';
 
+        let totalReceita = 0;
+        let totalDespesa = 0;
+
         const adicionarLinha = (tipo, item) => {
             const row = tabela.insertRow();
             row.insertCell(0).textContent = tipo;
@@ -86,10 +89,20 @@ async function populateTable(mes) {
             row.insertCell(2).textContent = item.data;
             row.insertCell(3).textContent = item.descricao;
             row.insertCell(4).textContent = item.categoria_nome;
+
+            if (tipo === 'Receita') {
+                totalReceita += parseFloat(item.valor);
+            } else if (tipo === 'Despesa') {
+                totalDespesa += parseFloat(item.valor);
+            }
         };
 
         dadosT.receitas.forEach(item => adicionarLinha('Receita', item));
         dadosT.despesas.forEach(item => adicionarLinha('Despesa', item));
+
+        document.getElementById('totalReceita').textContent = `R$ ${totalReceita.toFixed(2)}`;
+        document.getElementById('totalDespesa').textContent = `R$ ${totalDespesa.toFixed(2)}`;
+        document.getElementById('saldo').textContent = `R$ ${(totalReceita - totalDespesa).toFixed(2)}`;
     } catch (error) {
         console.error('Erro:', error);
         const tabela = document.querySelector('#historico tbody');
