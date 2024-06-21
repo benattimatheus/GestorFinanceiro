@@ -4,36 +4,42 @@ require_once __DIR__ . '/../database/Database.php';
 
 
 
-class RequestTabela{
+class RequestTabela {
+    public static function getDadosPorMes($mes)
+    {
+        try {
+            $pdo = Database::getConn();
+            $mesFormatado = str_pad($mes, 2, '0', STR_PAD_LEFT);
 
-public static function getDadosPorMes()
-{
-    try {
-        $pdo = Database::getConn();
+            $stmtReceitas = $pdo->prepare("
+                SELECT receitas.*, categoria.categoria AS categoria_nome
+                FROM receitas
+                JOIN categoria ON receitas.categoria = categoria.id
+                WHERE receitas.data LIKE :mes
+            ");
+            $stmtReceitas->bindValue(':mes', '%/' . $mesFormatado . '/%', PDO::PARAM_STR);
+            $stmtReceitas->execute();
+            $receitas = $stmtReceitas->fetchAll(PDO::FETCH_ASSOC);
 
-        $stmtReceitas = $pdo->prepare("SELECT * FROM receitas");    
-        // $stmtReceitas->bindParam(':mes', $mes, PDO::PARAM_INT);
-        $stmtReceitas->execute();
-        $receitas = $stmtReceitas->fetchAll(PDO::FETCH_ASSOC);
+            $stmtDespesas = $pdo->prepare("
+                SELECT despesas.*, categoria.categoria AS categoria_nome
+                FROM despesas
+                JOIN categoria ON despesas.categoria = categoria.id
+                WHERE despesas.data LIKE :mes
+            ");
+            $stmtDespesas->bindValue(':mes', '%/' . $mesFormatado . '/%', PDO::PARAM_STR);
+            $stmtDespesas->execute();
+            $despesas = $stmtDespesas->fetchAll(PDO::FETCH_ASSOC);
 
-        $stmtDespesas = $pdo->prepare("SELECT * FROM despesas");
-        // $stmtDespesas->bindParam(':mes', $mes, PDO::PARAM_INT);
-        $stmtDespesas->execute();
-        $despesas = $stmtDespesas->fetchAll(PDO::FETCH_ASSOC);
-
-        echo json_encode(['receitas' => $receitas, 'despesas' => $despesas]);
-    } catch (PDOException $e) {
-        echo json_encode(['error' => 'Erro ao conectar ao banco de dados: ' . $e->getMessage()]);
+            echo json_encode(['receitas' => $receitas, 'despesas' => $despesas]);
+        } catch (PDOException $e) {
+            echo json_encode(['error' => 'Erro ao conectar ao banco de dados: ' . $e->getMessage()]);
+        }
     }
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if (isset($_GET['mes'])) {
+        RequestTabela::getDadosPorMes((int)$_GET['mes']);
+    }
 }
-
-
-// if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-// if (isset($_GET['mes'])) {
-//     RequestTabela::getDadosPorMes((int)$_GET['mes']);
-// }
-// }
-
-RequestTabela::getDadosPorMes();
