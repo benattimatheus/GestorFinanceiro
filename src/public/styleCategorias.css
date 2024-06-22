@@ -1,0 +1,39 @@
+body{
+    background-color: rgb(28, 28, 28);
+    color: white;
+}
+
+h1{
+    max-width: 100%;
+    margin-left: 42%;
+}
+
+.icone-mais{
+    width: 60px;
+    height: 60px;
+    margin-left: 10%;
+}
+
+.card-css{
+    width: 80%;
+    margin-left: 10%;
+
+}
+
+.table-css{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.lista-card{
+    background-color: rgb(32, 32, 32);
+    color: white;
+
+}
+
+.icones{
+    max-width: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
