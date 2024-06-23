@@ -1,8 +1,30 @@
 body{
+    max-width: 100%;
+    margin-left: 10%;
+    margin-right: 7%;
     font-family: sans-serif;
-    background-color: #301b53;
-    color: white;
+    background-color: #EDF3FB;
+    color: black;
 }
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Inicialmente escondido */
+    z-index: 1;
+}
+
+
+h1[id="titulo"]{
+    margin-left: 39.5%;
+    margin-top: 65px;
+    margin-bottom: 60px;
+}
+
 
 .popup {
     background-color: white;
@@ -72,17 +94,16 @@ button[id="cancelar"]{
 }
 
 button[id="openPopup"]{
-    background-color: rgba(255, 255, 255, 0.313);
+    background-color: #6515DD;
+    font-size: 20px;
     color: white;
     width: 20%;
     height: 40px;
     border-radius: 10px;
-
+    margin-left: 40%;
+    border:none
 }
 
-h1[id="titulo"]{
-    border-left: 200px;
-}
 
 #historico {
     table {
@@ -105,6 +126,7 @@ h1[id="titulo"]{
     justify-content: center;
     align-items: center;
     gap: 60px;
+    margin-bottom: 60px;
 }
 
 .valores>div {
@@ -112,7 +134,7 @@ h1[id="titulo"]{
     align-items: center;
     background-color: #f2f2f2;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 20px;
     width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
