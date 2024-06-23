@@ -1,6 +1,6 @@
 <?php
 
-class Despesa
+class Receita
 {
     private int $id;
     private float $valor;

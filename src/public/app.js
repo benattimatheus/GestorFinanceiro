@@ -10,7 +10,7 @@ window.onload = function() {
 
 
 async function populateSelect() {
-    const Caminho = '/src/controllers/RequestPopulateSelector.php';
+    const Caminho = '../src/controllers/RequestPopulateSelector.php';
     try {
         const resposta = await fetch(Caminho);
         const dados = await resposta.json();
