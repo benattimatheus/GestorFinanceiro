@@ -1,0 +1,45 @@
+body{
+    max-width: 100%;
+    margin-left: 10%;
+    margin-right: 7%;
+    font-family: sans-serif;
+    background-color: #EDF3FB;
+    color: black;
+}
+
+h1[id="titulo"]{
+    margin-left: 41%;
+    margin-top: 65px;
+    margin-bottom: 60px;
+}
+
+h3[id="suporte"]{
+    margin-left: 25.9%;
+    margin-bottom: 8%;
+}
+
+h4[id="h4-1"]{
+    margin-left: 43%;
+}
+
+h4[id="h4-2"]{
+    margin-left: 38.5%;
+}
+
+.campo-email{
+    width: 40%;
+    height: 30px;
+    margin-left: 27%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+.campo-descricao{
+    width: 40%;
+    height: 80px;
+    margin-left: 27%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+}
