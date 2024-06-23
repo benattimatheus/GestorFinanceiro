@@ -6,22 +6,137 @@
     <script src="https://kit.fontawesome.com/704dd92f4c.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="src/public/styleCategorias.css">
+    <link rel="stylesheet" href="src/public/styleSideBar.css">
     <!-- <script src="scriptCategorias.js"></script> -->
     <title>Categorias</title>
 </head>
 <body>
-    <br>
-    <br>
-    <h1>Categorias</h1>
-    <img class="icone-mais" src="mais.png">
-    <br>
-    <br>
 
-    <div class="table-css">
-    <!-- <div class="card-css"> -->
-    <!-- <div class="card"> -->
-    <table class="table" style="color: white;">
-        <!-- <div class="card-header"> -->
+  <h1 id="titulo">Categorias</h1>
+  <img type="button" onclick="Exibir()" class="icone-mais" src="src/public/+.png">
+ 
+
+
+  <div id="overlay" ></div>
+      <div class="body-sidebar"></div>
+      <nav class="sidebar">
+          <ul>
+            <img src="src/public/logo.png" class="logo">
+            <br><br><br>
+              <li class="sidebar-item">
+                <a href="index.html">
+                  <i class="tamanho fa-solid fa-house-user"></i>
+                  <span class="textoSidebar">
+                  Início
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="categorias.html">
+                  <i class="tamanho fa-solid fa-tag" style="color: #6515DD;"></i>
+                  <span class="textoSidebar">
+                  Categorias
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="#">
+                  <i class="tamanho fa-solid fa-envelope"></i>
+                  <span class="textoSidebar">
+                  Suporte
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="#">
+                  <i class="tamanho fa-solid fa-circle-info"></i>
+                  <span class="textoSidebar">
+                  Sobre nós
+                  </span>
+                </a>
+          </ul>
+      </nav>
+      
+
+ 
+      
+
+  <dialog id="Popup">
+    <div id="formulario" class="popup">
+      <h2 id="titulo-popup">Nova Categoria</h2>
+      <form action="#">
+
+        <div class="campo">
+          <!-- <label for="descricao">Descrição:</label> -->
+          <input type="text" id="nome" name="nome" placeholder="Nome"  required>
+        </div>
+
+        <div class="campo">
+          <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo" onchange=""  required> 
+              <option value="1">Receita</option>
+              <option value="0">Despesa</option>
+            </select>
+        </div>
+
+        <div>
+          <button type="button" id="cadastrar">Cadastrar</button>
+          <button type="button" id="cancelar" onclick="Cancelar()" >Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+
+
+
+  <dialog id="Popup-editar-categoria">
+    <div id="formulario" class="popup">
+      <h2 id="titulo-popup">Editar Categoria</h2>
+      <form action="#">
+
+        <div class="campo">
+          <!-- <label for="descricao">Descrição:</label> -->
+          <input type="text" id="nome" name="nome" placeholder="Nome"  required>
+        </div>
+
+        <div class="campo">
+          <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo" onchange=""  required> 
+              <option value="1">Receita</option>
+              <option value="0">Despesa</option>
+            </select>
+        </div>
+
+        <div>
+          <button type="button" id="editar">Editar</button>
+          <button type="button" id="cancelar" onclick="CancelarEditar()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+
+   
+  
+  <dialog id="Popup-apagar-categoria">
+    <div id="formulario" class="popup">
+      <h2 id="titulo-popup">Apagar Categoria</h2>
+      <h5 id="apagar-categoria-1">Todas as suas transações com essa categoria serão apagadas</h5>
+      <h5 id="apagar-categoria-2">Deseja mesmo apagar essa categoria?</h5>
+      <form action="#">
+        <div>
+          <button type="button" id="sim-apagar">Sim</button>
+          <button type="button" id="nao-apagar" onclick="CancelarApagar()" >Não</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+
+
+  <div class="table-css">
+    <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -30,29 +145,26 @@
             <th scope="col">Ações</th>
           </tr>
         </thead>
-        <!-- </div> -->
-        <!-- <div class="card-body"> -->
         <tbody>
           <tr>
             <th scope="row">1</th>
             <td>Alimentação</td>
             <td>Despesa</td>
             <td>
-                <div class="icones">
-                    <i href="#" name="Editar" class="fa-solid fa-pencil" style="color: #ffffff;"></i>
-                    <i href="#" name="Cancelar" class="fa-solid fa-trash" style="color: #ffffff;"></i></td>
-                </div>
+              <div class="icones">
+                <i href="#" tipe="button" name="Editar" class="fa-solid fa-pencil"onclick="ExibirEditar()"></i>
+                <i href="#" type="button" name="Cancelar" class="fa-solid fa-trash" onclick="ExibirApagar()"></i></td>
+              </div>
           </tr>
           <tr>
             <th scope="row">2</th>
             <td>Transporte</td>
             <td>Despesa</td>
             <td>
-                <div class="icones">
-                    <i href="#" name="Editar" class="fa-solid fa-pencil" style="color: #ffffff;"></i>
-                    <i href="#" name="Cancelar" class="fa-solid fa-trash" style="color: #ffffff;"></i></td>
-                </div>
-
+              <div class="icones">
+                <i href="#" tipe="button" name="Editar" class="fa-solid fa-pencil"onclick="ExibirEditar()"></i>
+                <i href="#" type="button" name="Cancelar" class="fa-solid fa-trash" onclick="ExibirApagar()"></i></td>
+              </div>
             </td>
           </tr>
           <tr>
@@ -60,19 +172,16 @@
             <td>Saúde</td>
             <td>Despesa</td>
             <td>
-                <div class="icones">
-                    <i href="#" name="Editar" class="fa-solid fa-pencil" style="color: #ffffff;"></i>
-                    <i href="#" name="Cancelar" class="fa-solid fa-trash" style="color: #ffffff;"></i></td>
-                </div>
-
+              <div class="icones">
+                <i href="#" tipe="button" name="Editar" class="fa-solid fa-pencil"onclick="ExibirEditar()"></i>
+                <i href="#" type="button" name="Cancelar" class="fa-solid fa-trash" onclick="ExibirApagar()"></i></td>
+              </div>
             </td>
           </tr>
         </tbody>
-        <!-- </div> -->
-      </table>
-      <!-- </div> -->
-      <!-- </div> -->
-       </div>
+    </table>
+  </div>
 
+       <script src="src/public/categorias.js"></script>
 </body>
 </html>
