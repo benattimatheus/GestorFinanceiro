@@ -1,72 +1,131 @@
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 100%;
-    background-color: #333;
-    transition: width 0.3s ease;
-  }
-  
-  .sidebar .sidebar-title {
-    padding: 10px 20px;
-    background-color: #444;
-    color: #fff;
-    text-align: center;
-  }
+.logo{
+  margin-top: 30px;
+  margin-left: 22%;
+  width: 60%; 
 
- 
-
-  .sidebar .sidebar-text {
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-    width: 190px;
-    font-family: 'Titillium Web', sans-serif;
 }
-  
-  .sidebar:hover .sidebar-text {
-    display: block; /* Mostra os textos ao passar o mouse */
-  }
 
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar li {
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .sidebar a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .sidebar i {
-    font-size: 20px;
-    transition: transform 0.3s ease;
-  }
 
-  
-  .sidebar:hover {
-    width: 200px;
-  }
+.tamanho {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 66px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+}
 
-  
-  .sidebar:hover i {
-    /* transform: scale(1.5); */
-    float: right;
-    position:relative;
-    margin-top: 10%;
+.sidebar:hover,
+nav.sidebar.expanded {
+  width: 13%;
+  color: #302f2f;
+}
 
-  }
+.sidebar {
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  width: 60px;
+  overflow: hidden;
+  transition: width 0.5s ease; 
+  z-index: 1000;
+ 
+}
+
+
+
+.sidebar>ul {
+  margin: 7px 0;
+}
+
+.sidebar li {
+  position: relative;
+  display: block;
+  width: 250px;
+}
+
+.sidebar li:hover{
+  background-color: #0000000e;
+}
+
+.sidebar li>a {
+  position: relative;
+  color: #302f2f;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: arial;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+
+
+.sidebar .nav-icon {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+}
+
+.sidebar .textoSidebar {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  width: 190px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+
+
+.no-touch .scrollable.hover {
+  overflow-y: hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+  overflow-y: auto;
+  overflow: visible;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+nav {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+nav ul,
+nav li {
+  outline: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li:hover>a,
+nav.sidebar li.active>a,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
+  color: #6515DD;
   
-  .sidebar.hovering .sidebar-text {
-    opacity: 1; /* Mostra os textos com opacidade total */
-    transform: translateX(0); /* Move os textos para a direita */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Animação suave */
-  }
+}
+
+
+
