@@ -10,19 +10,19 @@ class DespesaModel
 
     public function save()
     {
-        $stmt = Database::getConn()->prepare('INSERT INTO despesas (id, valor, descricao, data, categoria)
-        VALUES (:id, :valor, :descricao, :data, :categoria;'); 
+        $stmt = Database::getConn()->prepare('INSERT INTO despesas (id, valor, descricao, datas, categoria)
+        VALUES (:id, :valor, :descricao, :datas, :categoria)'); 
 
         $id = $this->despesa->getID();
         $valor = $this->despesa->getValor();
         $descricao = $this->despesa->getDescricao();
-        $data = $this->despesa->getData();
+        $datas = $this->despesa->getData();
         $categoria = $this->despesa->getCategoria();
 
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':valor', $valor);
         $stmt->bindParam(':descricao', $descricao);
-        $stmt->bindParam(':data', $data);
+        $stmt->bindParam(':datas', $datas);
         $stmt->bindParam(':categoria', $categoria);
 
         return $stmt->execute();

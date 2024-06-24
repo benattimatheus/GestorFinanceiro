@@ -89,7 +89,7 @@
     <dialog id="Popup">
       <div id="formulario" class="popup">
         <h2 id="titulo-popup">Cadastro de Transações</h2>
-        <form action="#">
+        <form action="/src/controllers/app.php" method="POST">
           <div class="campo">
             <label for="tipo">Tipo:</label>
             <select id="tipo" name="tipo" onchange="populateSelect()"> 
@@ -98,13 +98,14 @@
               <option value="0">Despesa</option>
             </select>
           </div>
+          <input type="hidden" id="id" name="id">
           <div class="campo">
             <input placeholder="Valor:" type="number" id="valor" name="valor" step="0.01" maxlength="20" required
               onkeyup="MascaraValor()">
           </div>
           <div class="campo">
             <!-- <label for="data">Data:</label> -->
-            <input type="date" id="data" name="data" placeholder="Data:" required>
+            <input type="date" id="datas" name="datas" placeholder="Data:" required>
           </div>
           <div class="campo">
             <!-- <label for="descricao">Descrição:</label> -->
@@ -118,7 +119,7 @@
             </select required>
           </div>
           <div>
-            <button type="button" id="cadastrar">Cadastrar</button>
+            <button type="submit" id="cadastrar">Cadastrar</button>
             <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
           </div>
         </form>

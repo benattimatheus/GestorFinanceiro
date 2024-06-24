@@ -16,7 +16,7 @@ class RequestTabela {
                 JOIN categoria ON receitas.categoria = categoria.id
                 WHERE receitas.datas LIKE :mes
             ");
-            $stmtReceitas->bindValue(':mes', '%/' . $mesFormatado . '/%', PDO::PARAM_STR);
+            $stmtReceitas->bindValue(':mes', '%-' . $mesFormatado . '-%', PDO::PARAM_STR);
             $stmtReceitas->execute();
             $receitas = $stmtReceitas->fetchAll(PDO::FETCH_ASSOC);
 
@@ -26,7 +26,7 @@ class RequestTabela {
                 JOIN categoria ON despesas.categoria = categoria.id
                 WHERE despesas.datas LIKE :mes
             ");
-            $stmtDespesas->bindValue(':mes', '%/' . $mesFormatado . '/%', PDO::PARAM_STR);
+            $stmtDespesas->bindValue(':mes', '%-' . $mesFormatado . '-%', PDO::PARAM_STR);
             $stmtDespesas->execute();
             $despesas = $stmtDespesas->fetchAll(PDO::FETCH_ASSOC);
 

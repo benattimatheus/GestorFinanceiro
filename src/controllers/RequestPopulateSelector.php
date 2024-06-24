@@ -8,12 +8,11 @@ class RequestPopulateSelector
     {
         try {
             $pdo = Database::getConn();
-            $stmt = $pdo->prepare("SELECT categoria, tipo FROM categoria"); //Adicionado o 'Tipo" no select do banco
+            $stmt = $pdo->prepare("SELECT id, categoria, tipo FROM categoria"); // Adicionado o 'tipo' no select do banco
             $stmt->execute();
-            $opcoes = $stmt->fetchAll();
+            $opcoes = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch as associative array
             echo json_encode($opcoes);
         } catch (PDOException $e) {
-            
             echo json_encode(['error' => 'Erro ao conectar ao banco de dados: ' . $e->getMessage()]);
         }
     }

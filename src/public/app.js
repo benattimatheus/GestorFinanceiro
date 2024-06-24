@@ -6,6 +6,15 @@ window.onload = function() {
     preencherSelectMes();
 };
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('id').value = gerarID();
+
+});
+
+function gerarID() {
+    return Math.floor(Date.now());
+}
+
 // -------------------------Função De Request------------------------------
 
 
@@ -22,6 +31,7 @@ async function populateSelect() {
             let TipoSelecionado = Number(tiposelecionado.value);  //Receita (1) ou Despesa (0)
             if (DadoBanco_convertido === TipoSelecionado) {
                 const option = document.createElement('option');
+                option.value = item.id; // Configurando o ID como o valor
                 option.text = item.categoria;
                 select.appendChild(option);
             }
@@ -32,6 +42,7 @@ async function populateSelect() {
         select.innerHTML = '<option value="" disabled>Erro ao carregar opções</option>';
     }
 }
+
 
 
 // -------------------------Função para tabela------------------------------
@@ -141,7 +152,6 @@ function VerificaValor(Num) {
     }
     Num.value = padrao;
 }
-
 
 function gerarPDF() {
     const doc = new jsPDF();

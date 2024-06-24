@@ -5,10 +5,10 @@ $select = new Select();
 $id = filter_input(INPUT_GET, 'id');
 
 if($id){
-    $select->deleteNotaRa($id);
-    $select->deleteAlunoRa($id);
+    $select->deleteDespesa($id);
+    $select->deleteReceita($id);
     header('Location: ../../../index.html');
     exit(); 
 } else {
-    echo "RA não fornecido.";
+    echo "ID não fornecido.";
 }

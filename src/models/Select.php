@@ -39,7 +39,7 @@ class Select{
         ');
 
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':valor', $valor, PDO::PARAM_FLOAT);
+        $stmt->bindParam(':valor', $valor, PDO::PARAM_INT);
         $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
         $stmt->bindParam(':datas', $datas, PDO::PARAM_STR);
         $stmt->bindParam(':categoria', $categoria, PDO::PARAM_INT);
@@ -66,7 +66,7 @@ class Select{
         ');
 
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':valor', $valor, PDO::PARAM_FLOAT);
+        $stmt->bindParam(':valor', $valor, PDO::PARAM_INT);
         $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
         $stmt->bindParam(':datas', $datas, PDO::PARAM_STR);
         $stmt->bindParam(':categoria', $categoria, PDO::PARAM_INT);
@@ -74,7 +74,7 @@ class Select{
         $stmt->execute();
     }
 
-    public static function deleteDespesas($id)
+    public static function deleteDespesa($id)
     {
         $stmt = Database::getConn()->prepare('DELETE FROM despesas WHERE id = :id');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
