@@ -14,7 +14,7 @@ class RequestTabela {
                 SELECT receitas.*, categoria.categoria AS categoria_nome
                 FROM receitas
                 JOIN categoria ON receitas.categoria = categoria.id
-                WHERE receitas.data LIKE :mes
+                WHERE receitas.datas LIKE :mes
             ");
             $stmtReceitas->bindValue(':mes', '%/' . $mesFormatado . '/%', PDO::PARAM_STR);
             $stmtReceitas->execute();
@@ -24,7 +24,7 @@ class RequestTabela {
                 SELECT despesas.*, categoria.categoria AS categoria_nome
                 FROM despesas
                 JOIN categoria ON despesas.categoria = categoria.id
-                WHERE despesas.data LIKE :mes
+                WHERE despesas.datas LIKE :mes
             ");
             $stmtDespesas->bindValue(':mes', '%/' . $mesFormatado . '/%', PDO::PARAM_STR);
             $stmtDespesas->execute();
