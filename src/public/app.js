@@ -2,38 +2,15 @@
 
 
 window.onload = function() {
-    exibirDados();
-    populateSelect();
+    populateSelect()
     preencherSelectMes();
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('id').value = generateUniqueID();
-
-    fetch('../src/models/Select.php')
-        .then(response => response.json())
-        .then(data => {
-            const selectElement = document.getElementById('categoriaSelect');
-
-            selectElement.innerHTML = '';
-
-            data.forEach(categoria => {
-                const option = document.createElement('option');
-                option.value = categoria.categoria;
-                option.textContent = categoria.categoria;
-                selectElement.appendChild(option);
-            });
-        })
-
-});
-
-function generateUniqueID() {
-    return Math.floor(Date.now());
-}
 // -------------------------Função De Request------------------------------
 
+
 async function populateSelect() {
-    const Caminho = '/src/controllers/RequestPopulateSelector.php';
+    const Caminho = '../src/controllers/RequestPopulateSelector.php';
     try {
         const resposta = await fetch(Caminho);
         const dados = await resposta.json();

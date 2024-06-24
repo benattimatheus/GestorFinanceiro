@@ -1,26 +1,24 @@
 <?php
 
-// require '../database/Database.php';
-
 class Receita
 {
     private int $id;
     private float $valor;
     private string $descricao;
-    private string $datas;
+    private string $data;
     private string $categoria;
 
     public function __construct(
         int $id,
         float $valor,
         string $descricao,
-        string $datas,
+        string $data,
         string $categoria
     ){
         $this->id = $id;
         $this->valor = $valor;
         $this->descricao = $descricao;
-        $this->datas = $datas;
+        $this->data = $data;
         $this->categoria = $categoria;
     }
 
@@ -41,7 +39,7 @@ class Receita
 
     public function getData(): string
     {
-        return $this->datas;
+        return $this->data;
     }
 
     public function getCategoria(): string

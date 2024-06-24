@@ -30,15 +30,15 @@ class Select{
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getAll') {
-    $data = Select::getAll(); // Supondo que Select::getAll() retorna um array associativo com 'receitas' e 'despesas'
-    header('Content-Type: application/json');
-    echo json_encode($data);
-    exit;
-}
+// if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getAll') {
+//     $data = Select::getAll(); // Supondo que Select::getAll() retorna um array associativo com 'receitas' e 'despesas'
+//     header('Content-Type: application/json');
+//     echo json_encode($data);
+//     exit;
+// }
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getCategorias') {
-    header('Content-Type: application/json');
-    echo json_encode(Select::getCategorias());
-    exit;
-}
+// if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getCategorias') {
+//     header('Content-Type: application/json');
+//     echo json_encode(Select::getCategorias());
+//     exit;
+// }
