@@ -3,10 +3,10 @@ body{
     color: white;
 }
 
-h1{
+/* h1{
     max-width: 100%;
     margin-left: 42%;
-}
+} */
 
 .icone-mais{
     width: 60px;
@@ -37,3 +37,17 @@ h1{
     justify-content: space-between;
 }
 
+th{
+    color: white;
+}
+
+tr{
+    color: rgb(233, 229, 229);
+}
+
+.titulo{
+    display: flex;
+    margin-top: 50px;
+    text-align: center;
+    justify-content: center;
+}

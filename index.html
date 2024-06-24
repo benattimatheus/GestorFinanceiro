@@ -9,166 +9,149 @@
     <link rel="stylesheet" href="/src/public/styleSideBar.css">
     <title>Gestor Financeiro</title>
 </head>
-
 <header>
-    
 </header>
 <body>
-
-    <h1 id="titulo" >Gestor Financeiro</h1>
-
-
-    <!-- Foi adicionado os campos para receita despesa e saldo  -->
-    <div class="valores">
-      <div class="Receita">
-        <div class="icon">
-          <i class="fas fa-dollar-sign"></i>
-        </div>
-          <div class="texto">
-          <div class="value" id="totalReceita">R$ 0000,00</div>
-          <div class="label">Ganho Total</div>
-        </div>
+  <div>
+    <h1 id="titulo">Gestor Financeiro</h1>
+  </div>
+  <div class="valores">
+    <div class="Receita">
+      <div class="icon">
+        <i class="fas fa-dollar-sign"></i>
       </div>
-      <div class="Despesa">
-        <div class="icon">
-          <i class="fas fa-money-bill-wave"></i>
-        </div>
-        <div class="texto">
-          <div class="value" id="totalDespesa">R$ 0000,00</div>
-          <div class="label">Despesa Total</div>
-        </div>
-      </div>
-      <div class="saldo">
-        <div class="icon">
-          <i class="fas fa-coins"></i>
-        </div>
-        <div class="texto">
-          <div class="value" id="saldo">R$ 0000,00</div>
-          <div class="label">Saldo</div>
-        </div>
+      <div class="texto">
+        <div class="value" id="totalReceita">R$ 0000,00</div>
+        <div class="label">Ganho Total</div>
       </div>
     </div>
-    <!-- Foi adicionado os campos para receita despesa e saldo  -->
+    <div class="Despesa">
+      <div class="icon">
+        <i class="fas fa-money-bill-wave"></i>
+      </div>
+      <div class="texto">
+        <div class="value" id="totalDespesa">R$ 0000,00</div>
+        <div class="label">Despesa Total</div>
+      </div>
+    </div>
+    <div class="saldo">
+      <div class="icon">
+        <i class="fas fa-coins"></i>
+      </div>
+      <div class="texto">
+        <div class="value" id="saldo">R$ 0000,00</div>
+        <div class="label">Saldo</div>
+      </div>
+    </div>
+  </div>
 
-      
-      <div class="body-sidebar"></div>
-      <nav class="sidebar">
-          <ul>
-              <img src="/src/public/logo.png" class="logo">
-              <br><br><br>
-              <li class="sidebar-item">
-                  <a href="index.html">
-                      <i class="tamanho fa-solid fa-house-user" style="color: #6515DD;"></i>
-                      <span class="textoSidebar">
-                          Início
-                      </span>
-                  </a>
-              </li>
-              <li class="sidebar-item">
-                  <a href="categorias.html">
-                    <i class="tamanho fa-solid fa-tag"></i>
-                      <span class="textoSidebar">
-                          Categorias
-                      </span>
-                  </a>
-              </li>
-              <li class="sidebar-item">
-                  <a href="#">
-                    <i class="tamanho fa-solid fa-envelope"></i>
-                      <span class="textoSidebar">
-                          Suporte
-                      </span>
-                  </a>
-              </li>
-              <li class="sidebar-item">
-                  <a href="#">
-                    <i class="tamanho fa-solid fa-circle-info"></i>
-                      <span class="textoSidebar">
-                          Sobre nós
-                      </span>
-                  </a>
-          </ul>
-
-      </nav>
-    
-
-
-
-      
+  <div class="body-sidebar">
+    <nav class="sidebar">
+      <ul>
+        <img src="/src/public/logo.png" class="logo">
+        <br><br><br>
+        <li class="sidebar-item">
+          <a href="index.html">
+            <i class="tamanho fa-solid fa-house-user" style="color: #6515DD;"></i>
+            <span class="textoSidebar">
+              Início
+            </span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="/src/views/categorias.html">
+            <i class="tamanho fa-solid fa-tag"></i>
+            <span class="textoSidebar">
+              Categorias
+            </span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="/src/views/suporte.html">
+            <i class="tamanho fa-solid fa-envelope"></i>
+            <span class="textoSidebar">
+              Suporte
+            </span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="/src/views/SobreNos.html">
+            <i class="tamanho fa-solid fa-circle-info"></i>
+            <span class="textoSidebar">
+              Sobre nós
+            </span>
+          </a>
+      </ul>
+    </nav>
+  </div>
+  <div>
     <dialog id="Popup">
-    <div id="formulario" class="popup">
+      <div id="formulario" class="popup">
         <h2 id="titulo-popup">Cadastro de Transações</h2>
         <form action="#">
-            
-            <div class="campo">
-                <label for="tipo">Tipo:</label>
-                <select id="tipo" name="tipo" onchange="populateSelect()"> /
-                  <!-- Foi mudado os values das opções e adicionado o evento onchange para filtrar as categorias-->
-                    <option value="1">Receita</option>
-                    <option value="0">Despesa</option>
-                </select>
-            </div>
-
-            <div class="campo">
-                <input placeholder="Valor:" type="number" id="valor" name="valor" step="0.01" maxlength="20"  required onkeyup="MascaraValor()">
-            </div>
-
-            <div class="campo">
-                <!-- <label for="data">Data:</label> -->
-                <input type="date" id="data" name="data" placeholder="Data:" required>
-            </div>
-            
-
-            <div class="campo">
-                <!-- <label for="descricao">Descrição:</label> -->
-                <input type="text" id="descricao" name="descricao" placeholder="Descrição (opcional)">
-            </div>
-
-            <div class="campo">
-                <label for="categoria">Categoria:</label>
-                <select id="categoria" name="categoria" required>
-                  <!-- Foi retirado opções fixas e agora só são puxadas a opções do banco -->
-                  <option value="" disabled selected>Selecione uma categoria</option>
-                </select required>
-            </div>
-            <div>
-                <button type="button" id="cadastrar">Cadastrar</button>
-                <button type="button" id="cancelar" onclick="Cancelar()" >Cancelar</button>
-            </div>
+          <div class="campo">
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo" onchange="populateSelect()"> /
+              <!-- Foi mudado os values das opções e adicionado o evento onchange para filtrar as categorias-->
+              <option value="1">Receita</option>
+              <option value="0">Despesa</option>
+            </select>
+          </div>
+          <div class="campo">
+            <input placeholder="Valor:" type="number" id="valor" name="valor" step="0.01" maxlength="20" required
+              onkeyup="MascaraValor()">
+          </div>
+          <div class="campo">
+            <!-- <label for="data">Data:</label> -->
+            <input type="date" id="data" name="data" placeholder="Data:" required>
+          </div>
+          <div class="campo">
+            <!-- <label for="descricao">Descrição:</label> -->
+            <input type="text" id="descricao" name="descricao" placeholder="Descrição (opcional)">
+          </div>
+          <div class="campo">
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria" required>
+              <!-- Foi retirado opções fixas e agora só são puxadas a opções do banco -->
+              <option value="" disabled selected>Selecione uma categoria</option>
+            </select required>
+          </div>
+          <div>
+            <button type="button" id="cadastrar">Cadastrar</button>
+            <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
+          </div>
         </form>
-        </dialog>
-
-    
-
-        <div>
-            <button id="openPopup" onclick="Exibir()">Adicionar Transação</button>
-        </div>
-
-    
-
-    <div class="SelectMes">
-        <label for="Mes">Mês:</label>
-        <select id="Mes" required>
-        </select>
+    </dialog>
+  </div>
+  <div>
+    <button id="openPopup" onclick="Exibir()">Adicionar Transação</button>
+  </div>
+  <div class="controles">
+    <div>
+      <label for="Mes" class="SelectMes">Mês:</label>
+      <select id="Mes" required>
+      </select>
     </div>
-
-    <div id="historico">
-        <h2>Histórico de Transações</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tipo</th>
-                    <th>Valor</th>
-                    <th>Data</th>
-                    <th>Descrição</th>
-                    <th>Categoria</th>
-                </tr>
-            </thead>
-            <tbody>
-                </tbody>
-        </table>
+    <div>
+      <button id="gerarPdfButtun" class="gerarPDF">Gerar PDF</button>
     </div>
-
-    <script src="/src/public/app.js"></script>
+  </div>
+  <div id="historico">
+    <h2>Histórico de Transações</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Valor</th>
+          <th>Data</th>
+          <th>Descrição</th>
+          <th>Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <script src="/src/public/app.js"></script>
 </body>
 </html>

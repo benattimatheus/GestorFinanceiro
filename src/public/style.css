@@ -110,6 +110,9 @@ button[id="openPopup"]{
     border:none
 }
 
+button[id="openPopup"]:hover{
+    background-color: #4d179e;
+}
 
 #historico {
     table {
@@ -186,4 +189,27 @@ button[id="openPopup"]{
 .texto .label {
     font-size: 14px;
     color: #777;
+}
+
+.controles{
+    display: flex;
+    justify-content: space-between;
+}
+
+.gerarPDF{
+    background-color: #6515DD;
+    font-size: 15px;
+    color: white;
+    width: 120px;
+    height: 35px;
+    border-radius: 10px;
+    border:none
+}
+
+.gerarPDF:hover{
+    background-color: #4d179e;
+}
+
+.SelectMes{
+    font-size: 15px;
 }
