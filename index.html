@@ -92,7 +92,7 @@
         <form action="#">
           <div class="campo">
             <label for="tipo">Tipo:</label>
-            <select id="tipo" name="tipo" onchange="populateSelect()"> /
+            <select id="tipo" name="tipo" onchange="populateSelect()"> 
               <!-- Foi mudado os values das opções e adicionado o evento onchange para filtrar as categorias-->
               <option value="1">Receita</option>
               <option value="0">Despesa</option>
@@ -134,7 +134,7 @@
       </select>
     </div>
     <div>
-      <button id="gerarPdfButtun" class="gerarPDF">Gerar PDF</button>
+      <button id="gerarPdfButton" class="gerarPDF" onclick="gerarPDF()">Gerar PDF</button>
     </div>
   </div>
   <div id="historico">
@@ -154,6 +154,10 @@
       </tbody>
     </table>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" 
+  integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" 
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   <script src="/src/public/app.js"></script>
 </body>
 </html>
