@@ -27,6 +27,59 @@ class Select{
     ];
     }
 
+    public static function updateReceita($id, $valor, $descricao, $datas, $categoria)
+    {
+        $stmt = Database::getConn()->prepare('
+        UPDATE receitas
+        SET valor = :valor,
+            descricao = :descricao,
+            datas = :datas,
+            categoria = :categoria
+        WHERE id = :id
+        ');
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':valor', $valor, PDO::PARAM_FLOAT);
+        $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+        $stmt->bindParam(':datas', $datas, PDO::PARAM_STR);
+        $stmt->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+
+        $stmt->execute();
+    }
+
+    public static function deleteReceita($id)
+    {
+        $stmt = Database::getConn()->prepare('DELETE FROM receitas WHERE id = :id');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public static function updateDespesa($id, $valor, $descricao, $datas, $categoria)
+    {
+        $stmt = Database::getConn()->prepare('
+        UPDATE despesas
+        SET valor = :valor,
+            descricao = :descricao,
+            datas = :datas,
+            categoria = :categoria
+        WHERE id = :id
+        ');
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':valor', $valor, PDO::PARAM_FLOAT);
+        $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+        $stmt->bindParam(':datas', $datas, PDO::PARAM_STR);
+        $stmt->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+
+        $stmt->execute();
+    }
+
+    public static function deleteDespesas($id)
+    {
+        $stmt = Database::getConn()->prepare('DELETE FROM despesas WHERE id = :id');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }
 
 
@@ -42,3 +95,4 @@ class Select{
 //     echo json_encode(Select::getCategorias());
 //     exit;
 // }
+
