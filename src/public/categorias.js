@@ -10,11 +10,20 @@ function Exibir(){
     ExibirPopup.showModal();
 }
 
+function ExibirEditar(){
+    let ExibirPopup = document.getElementById("Popup-editar-categoria");
+    ExibirPopup.showModal();
+}
+
+function ExibirApagar(){
+    let ExibirPopup = document.getElementById("Popup-apagar-categoria");
+    ExibirPopup.showModal();
+}
+
 function Cancelar(){
     let cancelar = document.getElementById("Popup");
     cancelar.close();
 }
-
 // -------------------------Função HTML categorias ------------------------------
 
 async function populateCategories() {
