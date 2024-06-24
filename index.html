@@ -98,8 +98,8 @@
     <dialog id="Popup">
     <div id="formulario" class="popup">
         <h2 id="titulo-popup">Cadastro de Transações</h2>
-        <form action="#">
-            
+        <form action="/src/controllers/app.php" method="POST">
+          <input type="hidden" id="id" name="id">
             <div class="campo">
                 <label for="tipo">Tipo:</label>
                 <select id="tipo" name="tipo" onchange="populateSelect()"> /
@@ -115,7 +115,7 @@
 
             <div class="campo">
                 <!-- <label for="data">Data:</label> -->
-                <input type="date" id="data" name="data" placeholder="Data:" required>
+                <input type="date" id="datas" name="datas" placeholder="Data:" required>
             </div>
             
 
@@ -126,13 +126,14 @@
 
             <div class="campo">
                 <label for="categoria">Categoria:</label>
-                <select id="categoria" name="categoria" required>
+                <select id="categoriaSelect" name="categoria" required>
                   <!-- Foi retirado opções fixas e agora só são puxadas a opções do banco -->
                   <option value="" disabled selected>Selecione uma categoria</option>
+
                 </select required>
             </div>
             <div>
-                <button type="button" id="cadastrar">Cadastrar</button>
+                <button type="submit" id="cadastrar">Cadastrar</button>
                 <button type="button" id="cancelar" onclick="Cancelar()" >Cancelar</button>
             </div>
         </form>
@@ -164,8 +165,8 @@
                     <th>Categoria</th>
                 </tr>
             </thead>
-            <tbody>
-                </tbody>
+            <tbody id="dados">
+            </tbody>
         </table>
     </div>
 
