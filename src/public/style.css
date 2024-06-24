@@ -107,7 +107,7 @@ button[id="openPopup"]{
     height: 40px;
     border-radius: 10px;
     margin-left: 40%;
-    border:none
+    border:none;
 }
 
 button[id="openPopup"]:hover{
@@ -203,7 +203,7 @@ button[id="openPopup"]:hover{
     width: 120px;
     height: 35px;
     border-radius: 10px;
-    border:none
+    border:none;
 }
 
 .gerarPDF:hover{
@@ -212,4 +212,43 @@ button[id="openPopup"]:hover{
 
 .SelectMes{
     font-size: 15px;
+}
+
+.acoesHtml{
+    width: 80px;
+}
+
+.acoesJS{
+    display: flex;
+    justify-content: space-around;
+    width: 120px;
+}
+
+.editar{
+    background-color: #15dd30;
+    font-size: 15px;
+    color: white;
+    width: 60px;
+    height: 25px;
+    border-radius: 7px;
+    border:none;
+    margin-right: 5px;
+}
+
+.excluir{
+    background-color: #dd1515;
+    font-size: 15px;
+    color: white;
+    width: 60px;
+    height: 25px;
+    border-radius: 7px;
+    border:none;
+}
+
+.editar:hover{
+    background-color: #1c9c2d;
+}
+
+.excluir:hover{
+    background-color: #9e1d1d;
 }

@@ -11,7 +11,7 @@ class RequestTabela {
             $mesFormatado = str_pad($mes, 2, '0', STR_PAD_LEFT);
 
             $stmtReceitas = $pdo->prepare("
-                SELECT receitas.*, categoria.categoria AS categoria_nome
+                SELECT receitas.id, receitas.valor, receitas.datas, receitas.descricao, categoria.categoria AS categoria_nome
                 FROM receitas
                 JOIN categoria ON receitas.categoria = categoria.id
                 WHERE receitas.datas LIKE :mes
@@ -21,7 +21,7 @@ class RequestTabela {
             $receitas = $stmtReceitas->fetchAll(PDO::FETCH_ASSOC);
 
             $stmtDespesas = $pdo->prepare("
-                SELECT despesas.*, categoria.categoria AS categoria_nome
+                SELECT despesas.id, despesas.valor, despesas.datas, despesas.descricao, categoria.categoria AS categoria_nome
                 FROM despesas
                 JOIN categoria ON despesas.categoria = categoria.id
                 WHERE despesas.datas LIKE :mes

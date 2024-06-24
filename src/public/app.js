@@ -84,11 +84,22 @@ async function populateTable(mes) {
 
         const adicionarLinha = (tipo, item) => {
             const row = tabela.insertRow();
-            row.insertCell(0).textContent = tipo;
-            row.insertCell(1).textContent = item.valor;
-            row.insertCell(2).textContent = item.datas;
-            row.insertCell(3).textContent = item.descricao;
-            row.insertCell(4).textContent = item.categoria_nome;
+            const idCell = row.insertCell(0);
+            idCell.textContent = item.id;
+            idCell.style.display = 'none'; 
+
+            row.insertCell(1).textContent = tipo;
+            row.insertCell(2).textContent = item.valor;
+            row.insertCell(3).textContent = item.datas;
+            row.insertCell(4).textContent = item.descricao;
+            row.insertCell(5).textContent = item.categoria_nome;
+
+            const actionsCell = row.insertCell(6);
+            actionsCell.classList.add('acoesJS');
+            actionsCell.innerHTML = `
+                <button class="editar" onclick="editarItem('${tipo}', ${item.id})">Editar</button>
+                <button class="excluir" onclick="excluirItem('${tipo}', ${item.id})">Excluir</button>
+            `;
 
             if (tipo === 'Receita') {
                 totalReceita += parseFloat(item.valor);
@@ -106,11 +117,11 @@ async function populateTable(mes) {
     } catch (error) {
         console.error('Erro:', error);
         const tabela = document.querySelector('#historico tbody');
-        tabela.innerHTML = '<tr><td colspan="5">Erro ao carregar dados</td></tr>';
+        tabela.innerHTML = '<tr><td colspan="6">Erro ao carregar dados</td></tr>';
     }
 }
 
-// -------------------------Função HTML------------------------------
+// -------------------------Função HTML index ------------------------------
 function MascaraValor() {
     let input = document.getElementById("valor");
     VerificaValor(input);
@@ -129,14 +140,4 @@ function VerificaValor(Num) {
         padrao = padrao.replace(/([0-9]{2}).([0-9]{3}$)/g, ".$1.$2");
     }
     Num.value = padrao;
-}
-
-function Exibir(){
-    let ExibirPopup = document.getElementById("Popup");
-    ExibirPopup.showModal();
-}
-
-function Cancelar(){
-    let cancelar = document.getElementById("Popup");
-    cancelar.close();
 }

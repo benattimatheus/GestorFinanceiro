@@ -30,19 +30,28 @@ body{
     color: white;
 
 }
-
 .icones{
-    max-width: 60px;
     display: flex;
     justify-content: space-between;
 }
 
+.EditarApagar{
+    justify-content: space-between;
+}
+
+.editar{
+    margin-right: 35px;
+}
+
 th{
     color: white;
+    text-align: center;
+    font-size: 20px;
 }
 
 tr{
     color: rgb(233, 229, 229);
+    text-align: center;
 }
 
 .titulo{
