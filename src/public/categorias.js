@@ -111,3 +111,40 @@ async function salvarEdicao() {
 }
 
 document.getElementById('salvar').addEventListener('click', salvarEdicao);
+
+
+// -------------------------Função HTML excluir categorias ------------------------------
+
+function ExibirApagar(id) {
+    let ExibirPopup = document.getElementById("Popup-apagar-categoria");
+    ExibirPopup.showModal();
+    document.getElementById('sim-apagar').onclick = function() {
+        apagarCategoria(id);
+    };
+}
+
+async function apagarCategoria(id) {
+    try {
+        const response = await fetch('/src/controllers/RequestApagarCategoria.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            populateCategories();
+            Cancelar();
+        } else {
+            alert('Erro ao apagar a categoria');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao apagar a categoria');
+    }
+}
+
+document.getElementById('sim-apagar').addEventListener('click', apagarCategoria);
