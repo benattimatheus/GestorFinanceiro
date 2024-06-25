@@ -77,31 +77,30 @@
       </form>
     </div>
   </dialog>
+
+
   <dialog id="Popup-editar-categoria">
     <div id="formulario" class="popup">
-      <h2 id="titulo-popup">Editar Categoria</h2>
-      <form action="#">
-
-        <div class="campo">
-          <!-- <label for="descricao">Descrição:</label> -->
-          <input type="text" id="nome" name="nome" placeholder="Nome"  required>
-        </div>
-
-        <div class="campo">
-          <label for="tipo">Tipo:</label>
-            <select id="tipo" name="tipo" onchange=""  required> 
-              <option value="1">Receita</option>
-              <option value="0">Despesa</option>
-            </select>
-        </div>
-
-        <div>
-          <button type="button" id="editar">Editar</button>
-          <button type="button" id="cancelar" onclick="CancelarEditar()">Cancelar</button>
-        </div>
-      </form>
+        <h2 id="titulo-popup">Editar Categoria</h2>
+        <form id="editar-form">
+            <input type="hidden" id="editar-id" name="id">
+            <div class="campo">
+                <input type="text" id="editar-nome" name="nome" placeholder="Nome" required>
+            </div>
+            <div class="campo">
+                <label for="editar-tipo">Tipo:</label>
+                <select id="editar-tipo" name="tipo" required>
+                    <option value="1">Receita</option>
+                    <option value="0">Despesa</option>
+                </select>
+            </div>
+            <div>
+                <button type="button" id="salvar">Salvar</button>
+                <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
+            </div>
+        </form>
     </div>
-  </dialog>
+</dialog>
 
 
    
@@ -114,7 +113,7 @@
       <form action="#">
         <div>
           <button type="button" id="sim-apagar">Sim</button>
-          <button type="button" id="nao-apagar" onclick="CancelarApagar()" >Não</button>
+          <button type="button" id="nao-apagar" onclick="Cancelar()" >Não</button>
         </div>
       </form>
     </div>

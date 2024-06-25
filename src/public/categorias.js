@@ -10,11 +10,6 @@ function Exibir(){
     ExibirPopup.showModal();
 }
 
-function ExibirEditar(){
-    let ExibirPopup = document.getElementById("Popup-editar-categoria");
-    ExibirPopup.showModal();
-}
-
 function ExibirApagar(){
     let ExibirPopup = document.getElementById("Popup-apagar-categoria");
     ExibirPopup.showModal();
@@ -22,7 +17,11 @@ function ExibirApagar(){
 
 function Cancelar(){
     let cancelar = document.getElementById("Popup");
+    let cancelar2 =document.getElementById("Popup-editar-categoria");
+    let cancelar3 =document.getElementById("Popup-apagar-categoria");
     cancelar.close();
+    cancelar2.close();
+    cancelar3.close();
 }
 // -------------------------Função HTML categorias ------------------------------
 
@@ -62,3 +61,53 @@ async function populateCategories() {
         tabela.innerHTML = '<tr><td colspan="4">Erro ao carregar dados</td></tr>';
     }
 }
+
+// -------------------------Função HTML editar categorias ------------------------------
+
+function ExibirEditar(id) {
+    let ExibirPopup = document.getElementById("Popup-editar-categoria");
+    ExibirPopup.showModal();
+
+    const tabela = document.querySelector('.table tbody');
+    const rows = tabela.getElementsByTagName('tr');
+    for (let row of rows) {
+        if (row.cells[0].textContent == id) {
+            document.getElementById('editar-nome').value = row.cells[1].textContent;
+            document.getElementById('editar-tipo').value = row.cells[2].textContent == 'Receita' ? 1 : 0;
+            document.getElementById('editar-id').value = id;
+            break;
+        }
+    }
+}
+
+async function salvarEdicao() {
+    const id = document.getElementById('editar-id').value;
+    const nome = document.getElementById('editar-nome').value;
+    const tipo = document.getElementById('editar-tipo').value;
+
+    const data = { id, nome, tipo };
+
+    try {
+        const response = await fetch('/src/controllers/RequestEditarCategoria.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            populateCategories();
+            Cancelar();
+        } else {
+            alert('Erro ao atualizar a categoria');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao atualizar a categoria');
+    }
+}
+
+document.getElementById('salvar').addEventListener('click', salvarEdicao);
