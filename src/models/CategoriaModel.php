@@ -12,14 +12,14 @@ class CategoriaModel
 
     public function save()
     {
-        $stmt = Database::getConn()->prepare('INSERT INTO categoria (id, tipo, categoria)
-        VALUES (:id, :tipo, :categoria)'); 
+        $stmt = Database::getConn()->prepare('INSERT INTO categoria (tipo, categoria)
+        VALUES (:tipo, :categoria)'); 
 
-        $id = $this->categoria->getID();
+        // $id = $this->categoria->getID();
         $tipo = $this->categoria->getTipo();
         $categoria = $this->categoria->getCategoria();
 
-        $stmt->bindParam(':id', $id);
+        // $stmt->bindParam(':id', $id);
         $stmt->bindParam(':tipo', $tipo);
         $stmt->bindParam(':categoria', $categoria);
 

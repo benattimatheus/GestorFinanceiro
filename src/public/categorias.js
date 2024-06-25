@@ -61,6 +61,34 @@ async function populateCategories() {
         tabela.innerHTML = '<tr><td colspan="4">Erro ao carregar dados</td></tr>';
     }
 }
+// -------------------------Função HTML cadastrar categorias ------------------------------
+async function CadastrarCategoria() {
+    const Caminho = '/src/controllers/RequestCadastroCategoria.php';
+    let Tipovalue= document.getElementById('tipo');
+    const tipo = Tipovalue.value; 
+    let CategoriaValue= document.getElementById('nome');
+    const categoria= CategoriaValue.value; 
+    try {
+        const resposta = await fetch(Caminho, {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify({ tipo, categoria }) 
+        });
+        if (!resposta.ok) {
+            throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
+        }
+        const dados = await resposta.json();
+        console.log(dados); 
+        let FecharPopup = document.getElementById("Popup");
+        FecharPopup.close();
+        location.reload();
+        return dados; 
+    } catch (erro) {
+        console.error('Erro ao cadastrar categoria:', erro);
+    }
+}
 
 // -------------------------Função HTML editar categorias ------------------------------
 
