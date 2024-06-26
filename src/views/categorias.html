@@ -87,6 +87,13 @@
             <div class="campo">
                 <input type="text" id="editar-nome" name="nome" placeholder="Nome" required>
             </div>
+            <div class="campo">
+                <label for="editar-tipo">Tipo:</label>
+                <select id="editar-tipo" name="tipo" required>
+                    <option value="1">Receita</option>
+                    <option value="0">Despesa</option>
+                </select>
+            </div>
             <div>
                 <button type="button" id="salvar">Salvar</button>
                 <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
@@ -95,6 +102,9 @@
     </div>
 </dialog>
 
+
+   
+  
   <dialog id="Popup-apagar-categoria">
     <div id="formulario" class="popup">
       <h2 id="titulo-popup">Apagar Categoria</h2>
