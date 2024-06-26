@@ -108,8 +108,8 @@ async function populateTable(mes) {
             const actionsCell = row.insertCell(6);
             actionsCell.classList.add('acoesJS');
             actionsCell.innerHTML = `
-                <button class="editar" onclick="editarItem('${tipo}', ${item.id})">Editar</button>
-                <button class="excluir" onclick="excluirItem('${tipo}', ${item.id})">Excluir</button>
+                <button class="editar" type="button" onclick="ExibirEditar('${tipo}', ${item.id})">Editar</button>
+                <button class="excluir" type="button" onclick="ExibirApagar('${tipo}', ${item.id})">Excluir</button>
             `;
 
             if (tipo === 'Receita') {
@@ -159,7 +159,138 @@ function Exibir(){
     ExibirPopup.showModal();
 }
 
-function Cancelar(){
+function Cancelar() {
     let cancelar = document.getElementById("Popup");
-    cancelar.close();
+    let cancelar2 = document.getElementById("Popup-editar-categoria");
+    let cancelar3 = document.getElementById("Popup-apagar-categoria");
+    if (cancelar) cancelar.close();
+    if (cancelar2) cancelar2.close();
+    if (cancelar3) cancelar3.close();
 }
+
+// -------------------------Função HTML editar dados ------------------------------
+
+async function populateSelectForEdit(tipoSelecionado) {
+    const Caminho = '../src/controllers/RequestPopulateSelector.php';
+    try {
+        const resposta = await fetch(Caminho);
+        const dados = await resposta.json();
+        const select = document.getElementById('editar-categoria');
+        select.innerHTML = '<option value="" disabled selected>Selecione uma categoria</option>';
+        dados.forEach(item => {
+            let DadoBanco_convertido = Number(item.tipo);
+            if (DadoBanco_convertido === Number(tipoSelecionado)) {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.text = item.categoria;
+                select.appendChild(option);
+            }
+        });
+    } catch (error) {
+        console.error('Erro:', error);
+        const select = document.getElementById('editar-categoria');
+        select.innerHTML = '<option value="" disabled>Erro ao carregar opções</option>';
+    }
+}
+
+
+function ExibirEditar(tipo, id) {
+    let ExibirPopup = document.getElementById("Popup-editar-categoria");
+    ExibirPopup.showModal();
+
+    // Popula o select de categorias com base no tipo selecionado
+    populateSelectForEdit(tipo).then(() => {
+        const tabela = document.querySelector('#historico tbody');
+        const rows = tabela.getElementsByTagName('tr');
+        for (let row of rows) {
+            if (row.cells[0].textContent == id) {
+                document.getElementById('editar-valor').value = row.cells[2].textContent.replace('R$ ', '');
+                document.getElementById('editar-datas').value = row.cells[3].textContent;
+                document.getElementById('editar-descricao').value = row.cells[4].textContent;
+                document.getElementById('editar-categoria').value = row.cells[5].dataset.id; 
+                document.getElementById('editar-id').value = id; // Adicione um campo hidden para armazenar o ID
+                break;
+            }
+        }
+    });
+}
+
+
+async function salvarEdicao(event) {
+    event.preventDefault(); 
+
+    const id = document.getElementById('editar-id').value;
+    const valor = document.getElementById('editar-valor').value;
+    const datas = document.getElementById('editar-datas').value;
+    const descricao = document.getElementById('editar-descricao').value;
+    const categoria = document.getElementById('editar-categoria').value;
+
+    const data = { id, valor, datas, descricao, categoria };
+
+    try {
+        const response = await fetch('/src/controllers/RequestEditarCategoria.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            const selectMes = document.getElementById('Mes');
+            const mesAtual = selectMes.value;
+            populateTable(mesAtual);
+            alert('Transação editada com sucesso!');
+            Cancelar();
+        } else {
+            alert('Erro ao atualizar a transação');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao atualizar a transação');
+    }
+}
+
+document.getElementById('editar-form').addEventListener('submit', salvarEdicao);
+
+
+// -------------------------Função para Exclusão de dados------------------------------
+
+function ExibirApagar(tipo, id) {
+    let ExibirPopup = document.getElementById("Popup-apagar-categoria");
+    ExibirPopup.showModal();
+    document.getElementById('sim-apagar').onclick = function() {
+        apagarTransacao(tipo, id);
+    };
+}
+
+// Função para apagar a transação
+async function apagarTransacao(tipo, id) {
+    try {
+        const response = await fetch('/src/controllers/RequestApagarTransacao.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ tipo, id })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            const selectMes = document.getElementById('Mes');
+            const mesAtual = selectMes.value;
+            populateTable(mesAtual);
+            // alert('Transação apagada com sucesso!');
+            Cancelar();
+        } else {
+            alert('Erro ao apagar a transação, sem sucesso');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao apagar a transação');
+    }
+}
+

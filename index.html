@@ -155,6 +155,50 @@
       </tbody>
     </table>
   </div>
+
+  <dialog id="Popup-editar-categoria">
+    <div id="formulario" class="popup">
+        <h2 id="titulo-popup">Edição de Transações</h2>
+        <form id="editar-form">
+            <input type="hidden" id="editar-id" name="editar-id">
+            <div class="campo">
+                <input placeholder="Valor:" type="number" id="editar-valor" name="valor" step="0.01" maxlength="20" required onkeyup="MascaraValor()">
+            </div>
+            <div class="campo">
+                <input type="date" id="editar-datas" name="datas" placeholder="Data:" required>
+            </div>
+            <div class="campo">
+                <input type="text" id="editar-descricao" name="descricao" placeholder="Descrição (opcional)">
+            </div>
+            <div class="campo">
+                <label for="editar-categoria">Categoria:</label>
+                <select id="editar-categoria" name="categoria" required>
+                    <option value="" disabled selected>Selecione uma categoria</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" id="cadastrar">Salvar</button>
+                <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+
+
+  <dialog id="Popup-apagar-categoria">
+    <div id="formulario" class="popup">
+      <h2 id="titulo-popup">Apagar Transação</h2>
+      <h5 id="apagar-categoria-1">A transação será removida</h5>
+      <h5 id="apagar-categoria-2">Deseja mesmo apagar essa transação?</h5>
+      <form action="#">
+        <div>
+          <button type="button" id="sim-apagar">Sim</button>
+          <button type="button" id="nao-apagar" onclick="Cancelar()" >Não</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
   <script>
     function openPdfPage() {
       const selectedMonth = document.getElementById('Mes').value;
