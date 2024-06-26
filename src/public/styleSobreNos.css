@@ -1,0 +1,37 @@
+body{
+    max-width: 100%;
+    margin-left: 10%;
+    margin-right: 7%;
+    background-color: #EDF3FB;
+    color: black;
+}
+
+h1[id="titulo"]{
+    margin-left: 44%;
+    margin-top: 65px;
+    margin-bottom: 60px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+h3{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(16, 16, 16);
+    text-align: center;
+}
+
+h5[id="descricao"]{
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(16, 16, 16);
+    text-align: center;
+}
+
+a{
+    color: rgb(16, 16, 16);
+    font-style: none;
+}
