@@ -196,15 +196,17 @@ button[id="openPopup"]:hover{
     justify-content: space-between;
 }
 
-.gerarPDF{
+.gerarPDF {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #6515DD;
-    font-size: 15px;
-    color: white;
+    color: #fff;
     width: 120px;
     height: 35px;
+    text-decoration: none;
     border-radius: 10px;
-    border:none;
-}
+  }
 
 .gerarPDF:hover{
     background-color: #4d179e;

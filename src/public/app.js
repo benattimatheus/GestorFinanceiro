@@ -100,7 +100,7 @@ async function populateTable(mes) {
             idCell.style.display = 'none'; 
 
             row.insertCell(1).textContent = tipo;
-            row.insertCell(2).textContent = item.valor;
+            row.insertCell(2).textContent = `R$ ${parseFloat(item.valor).toFixed(2)}`;
             row.insertCell(3).textContent = item.datas;
             row.insertCell(4).textContent = item.descricao;
             row.insertCell(5).textContent = item.categoria_nome;
@@ -152,23 +152,6 @@ function VerificaValor(Num) {
     }
     Num.value = padrao;
 }
-
-function gerarPDF() {
-    const doc = new jsPDF();
-    let startY = 10;
-    
-    const table = document.querySelector('#historico table'); // Seleciona a tabela dentro de #historico
-    const headers = Array.from(table.querySelectorAll('thead th')).map(header => header.textContent.trim());
-    const data = Array.from(table.querySelectorAll('tbody tr')).map(row =>
-      Array.from(row.querySelectorAll('td')).map(cell => cell.textContent.trim())
-    );
-  
-    doc.text('Dados da Tabela', 14, startY);
-    startY += 10;
-    doc.autoTable({ startY, head: [headers], body: data });
-    doc.save('dados_tabela.pdf');
-  }
-
 // -------------------------Função para popup------------------------------
 
 function Exibir(){
