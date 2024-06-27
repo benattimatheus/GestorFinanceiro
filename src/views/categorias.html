@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/704dd92f4c.js" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="../public/styleCategorias.css">
   <link rel="stylesheet" href="../public/styleSideBar.css">
   <link rel="icon" href="../public/assets/logoIcon.ico" type="image/x-icon">
@@ -58,24 +57,30 @@
         </a>
     </ul>
   </nav>
+
   <dialog id="Popup">
-    <div id="formulario" class="popup">
+    <div id="formulario" class="popups">
       <h2 id="titulo-popup">Nova Categoria</h2>
       <form action="#">
         <div class="campo">
-          <!-- <label for="descricao">Descrição:</label> -->
-          <input type="text" id="nome" name="nome" placeholder="Nome" required>
+          <div class="mb-3"></div>
+            <input type="text" id="nome" name="nome" placeholder="Nome" required class="form-control"  placeholder="Nome da categoria">
+          </div>
         </div>
+
         <div class="campo">
-          <label for="tipo">Tipo:</label>
-          <select id="tipo" name="tipo" required>
+          <select id="tipo" name="tipo" required class="form-select" aria-label="Default select example">
+            <option selected>Selecione o Tipo</option>
             <option value="1">Receita</option>
-            <option value="0">Despesa</option>
+            <option value="2">Despesa</option>
           </select>
         </div>
-        <div>
-          <button type="button" id="cadastrar" onclick="CadastrarCategoria()">Cadastrar</button>
-          <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
+
+
+
+        <div class="espaco-botoes">
+          <button type="button" class="btn btn-success" id="cadastrar" onclick="CadastrarCategoria()">Cadastrar</button>
+          <button type="button" class="espaco-botoes btn btn-danger" id="cancelar" onclick="Cancelar()">Cancelar</button>
         </div>
       </form>
     </div>
@@ -83,24 +88,30 @@
 
 
   <dialog id="Popup-editar-categoria">
-    <div id="formulario" class="popup">
+    <div id="formulario" class="popups">
       <h2 id="titulo-popup">Editar Categoria</h2>
       <form id="editar-form">
         <input type="hidden" id="editar-id" name="id">
+
         <div class="campo">
-          <input type="text" id="editar-nome" name="nome" placeholder="Nome" required>
+          <div class="mb-3"></div>
+            <input type="text" id="editar-nome" name="nome" placeholder="Nome" required class="form-control">
+          </div>
         </div>
+
         <div class="campo">
-          <label for="editar-tipo">Tipo:</label>
-          <select id="editar-tipo" name="tipo" required>
+          <select id="editar-tipo" name="tipo" required class="form-select" aria-label="Default select example">
+            <option selected>Selecione o Tipo</option>
             <option value="1">Receita</option>
-            <option value="0">Despesa</option>
+            <option value="2">Despesa</option>
           </select>
         </div>
-        <div>
-          <button type="button" id="salvar">Salvar</button>
-          <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
+
+        <div class="espaco-botoes">
+          <button type="button" class="btn btn-success" id="salvar" onclick=" ">Salvar</button>
+          <button type="button" class="espaco-botoes btn btn-danger" id="cancelar" onclick="Cancelar()">Cancelar</button>
         </div>
+
       </form>
     </div>
   </dialog>
@@ -109,14 +120,14 @@
 
 
   <dialog id="Popup-apagar-categoria">
-    <div id="formulario" class="popup">
+    <div id="formulario" class="popups">
       <h2 id="titulo-popup">Apagar Categoria</h2>
       <h5 id="apagar-categoria-1">Todas as suas transações com essa categoria serão apagadas</h5>
       <h5 id="apagar-categoria-2">Deseja mesmo apagar essa categoria?</h5>
       <form action="#">
-        <div>
-          <button type="button" id="sim-apagar">Sim</button>
-          <button type="button" id="nao-apagar" onclick="Cancelar()">Não</button>
+        <div class="espaco-botoes">
+          <button type="button" id="sim-apagar" class="btn btn-success">Sim</button>
+          <button type="button" id="nao-apagar" class="espaco-botoes btn btn-danger" onclick="Cancelar()">Não</button>
         </div>
       </form>
     </div>
@@ -139,8 +150,8 @@
   </div>
 
   <script src="../public/categorias.js"></script>
-</body>
 
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 
 </html>
