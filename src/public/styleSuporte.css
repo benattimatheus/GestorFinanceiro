@@ -1,33 +1,24 @@
-body{
-    max-width: 100%;
-    margin-left: 10%;
-    margin-right: 7%;
+body {
     font-family: sans-serif;
     background-color: #EDF3FB;
     color: black;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
-h1[id="titulo"]{
-    margin-left: 43%;
-    margin-top: 65px;
-    margin-bottom: 60px;
-}
-
-h3[id="suporte"]{
-    margin-left: 28%;
-    margin-bottom: 8%;
-}
-
-h4[id="h4-1"]{
-    margin-left: 43%;
-}
-
-h4[id="h4-2"]{
-    margin-left: 38.5%;
+.conteudo{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .forms-email{
-    margin-left: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 750px;
 }
-
-
