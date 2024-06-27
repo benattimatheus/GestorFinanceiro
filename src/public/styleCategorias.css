@@ -8,6 +8,24 @@ body{
     margin-left: 42%;
 } */
 
+.popups{
+    border: gray;
+    border-radius: 20px;
+    border-color: gray;
+    
+}
+
+.campo{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.espaco-botoes{
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .icone-mais{
     width: 60px;
     height: 60px;
@@ -60,4 +78,3 @@ tr{
     text-align: center;
     justify-content: center;
 }
-
