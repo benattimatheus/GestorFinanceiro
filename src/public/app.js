@@ -1,6 +1,5 @@
 // -------------------------Função onload------------------------------
 
-
 window.onload = function() {
     populateSelect()
     preencherSelectMes();
@@ -16,7 +15,6 @@ function gerarID() {
 }
 
 // -------------------------Função De Request------------------------------
-
 
 async function populateSelect() {
     const Caminho = '../src/controllers/RequestPopulateSelector.php';
@@ -42,8 +40,6 @@ async function populateSelect() {
         select.innerHTML = '<option value="" disabled>Erro ao carregar opções</option>';
     }
 }
-
-
 
 // -------------------------Função para tabela------------------------------
 
@@ -131,7 +127,6 @@ async function populateTable(mes) {
         tabela.innerHTML = '<tr><td colspan="6">Erro ao carregar dados</td></tr>';
     }
 }
-
 
 // -------------------------Função HTML index ------------------------------
 function MascaraValor() {
@@ -226,7 +221,7 @@ async function populateSelectForEdit(tipoNumerico, categoriaSelecionada) {
         dados.forEach(item => {
             const option = document.createElement('option');
             option.text = item.categoria;
-            option.value = item.id
+            // option.value = item.id // esse porcaria aqui não deixa funcionar o puxar o select
             
             if (item.id === categoriaSelecionada) {
                 option.selected = true;
@@ -249,7 +244,7 @@ async function salvarEdicao(event) {
     const valor = document.getElementById('editar-valor').value;
     const datas = document.getElementById('editar-datas').value;
     const descricao = document.getElementById('editar-descricao').value;
-    const categoriaId = document.getElementById('editar-categoria').value;
+    const categoria = document.getElementById('editar-categoria').value;
 
     const tabela = document.querySelector('#historico tbody');
     const rows = tabela.getElementsByTagName('tr');
@@ -269,35 +264,51 @@ async function salvarEdicao(event) {
             break;
         }
     }
-    
-    const data = { id, tipo, valor, datas, descricao, categoria: categoriaId };
+
     try {
-        const response = await fetch('/src/controllers/RequestEditarTransacao.php', {
+        const response = await fetch('/src/controllers/RequestSelectCategoriaPorNome.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({ categoria })
         });
 
         const result = await response.json();
 
         if (result.success) {
-            const selectMes = document.getElementById('Mes');
-            const mesAtual = selectMes.value;
-            populateTable(mesAtual);
-            alert('Transação editada com sucesso!');
-            Cancelar(); 
+            const categoriaID = result.data.id; 
+            const data = { id, tipo, valor, datas, descricao, categoriaID };
+            const editResponse = await fetch('/src/controllers/RequestEditarTransacao.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const editResult = await editResponse.json();
+
+            if (editResult.success) {
+                const selectMes = document.getElementById('Mes');
+                const mesAtual = selectMes.value;
+                populateTable(mesAtual);
+                alert('Transação editada com sucesso!');
+                Cancelar();
+            } else {
+                alert('Erro ao atualizar a transação');
+            }
         } else {
-            alert('Erro ao atualizar a transação');
+            alert('Erro ao pegar ID da categoria');
         }
     } catch (error) {
         console.error('Erro:', error);
-        alert('Erro ao atualizar a transação');
+        alert('Erro ao pegar ID da categoria');
     }
 }
 
 document.getElementById('editar-form').addEventListener('submit', salvarEdicao);
+
 
 // -------------------------Função para Exclusão de dados------------------------------
 
@@ -309,7 +320,6 @@ function ExibirApagar(tipo, id) {
     };
 }
 
-// Função para apagar a transação
 async function apagarTransacao(tipo, id) {
     try {
         const response = await fetch('/src/controllers/RequestApagarTransacao.php', {
