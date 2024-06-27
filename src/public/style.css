@@ -21,9 +21,9 @@ body {
 
 
 h1[id="titulo"] {
-    margin-left: 39.5%;
-    margin-top: 65px;
-    margin-bottom: 60px;
+    margin-left: 35%;
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 
@@ -111,6 +111,7 @@ button[id="openPopup"] {
     height: 40px;
     border-radius: 10px;
     margin-left: 40%;
+    margin-bottom: 20px;
     border: none;
 }
 
@@ -182,7 +183,7 @@ button[id="nao-apagar"] {
     justify-content: center;
     align-items: center;
     gap: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .valores>div {
@@ -261,6 +262,16 @@ button[id="nao-apagar"] {
 
 .SelectMes {
     font-size: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.forma-mes{
+    border-radius: 20px;
+}
+
+.centraliza-mes{
+    margin-left: 44.5%;
 }
 
 .acoesHtml {
