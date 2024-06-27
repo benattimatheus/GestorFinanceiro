@@ -1,78 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/704dd92f4c.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/styleCategorias.css">
-    <link rel="stylesheet" href="../public/styleSideBar.css">
-    <link rel="icon" href="../public/assets/logoIcon.ico" type="image/x-icon">
-    <!-- <script src="scriptCategorias.js"></script> -->
-    <title>Categorias</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/704dd92f4c.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../public/styleCategorias.css">
+  <link rel="stylesheet" href="../public/styleSideBar.css">
+  <link rel="icon" href="../public/assets/logoIcon.ico" type="image/x-icon">
+  <!-- <script src="scriptCategorias.js"></script> -->
+  <title>Categorias</title>
 </head>
+
 <body>
   <div class="titulo">
     <h1 id="titulo">Categorias</h1>
   </div>
   <img type="button" onclick="Exibir()" class="icone-mais" src="../public/assets/+.png">
-  <div id="overlay" ></div>
-      <div class="body-sidebar"></div>
-      <nav class="sidebar">
-          <ul>
-            <img src="../public/assets/logo.png" class="logo">
-            <br><br><br>
-              <li class="sidebar-item">
-                <a href="../../index.html">
-                  <i class="tamanho fa-solid fa-house-user"></i>
-                  <span class="textoSidebar">
-                  Início
-                  </span>
-                </a>
-              </li>
-              <li class="sidebar-item">
-                <a href="categorias.html">
-                  <i class="tamanho fa-solid fa-tag" style="color: #6515DD;"></i>
-                  <span class="textoSidebar">
-                  Categorias
-                  </span>
-                </a>
-              </li>
-              <li class="sidebar-item">
-                <a href="suporte.html">
-                  <i class="tamanho fa-solid fa-envelope"></i>
-                  <span class="textoSidebar">
-                  Suporte
-                  </span>
-                </a>
-              </li>
-              <li class="sidebar-item">
-                <a href="SobreNos.html">
-                  <i class="tamanho fa-solid fa-circle-info"></i>
-                  <span class="textoSidebar">
-                  Sobre nós
-                  </span>
-                </a>
-          </ul>
-      </nav>
+  <div id="overlay"></div>
+  <div class="body-sidebar"></div>
+  <nav class="sidebar">
+    <ul>
+      <img src="../public/assets/logo.png" class="logo">
+      <br><br><br>
+      <li class="sidebar-item">
+        <a href="../../index.html">
+          <i class="tamanho fa-solid fa-house-user"></i>
+          <span class="textoSidebar">
+            Início
+          </span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="categorias.html">
+          <i class="tamanho fa-solid fa-tag" style="color: #6515DD;"></i>
+          <span class="textoSidebar">
+            Categorias
+          </span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="suporte.html">
+          <i class="tamanho fa-solid fa-envelope"></i>
+          <span class="textoSidebar">
+            Suporte
+          </span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="SobreNos.html">
+          <i class="tamanho fa-solid fa-circle-info"></i>
+          <span class="textoSidebar">
+            Sobre nós
+          </span>
+        </a>
+    </ul>
+  </nav>
   <dialog id="Popup">
     <div id="formulario" class="popup">
       <h2 id="titulo-popup">Nova Categoria</h2>
       <form action="#">
         <div class="campo">
           <!-- <label for="descricao">Descrição:</label> -->
-          <input type="text" id="nome" name="nome" placeholder="Nome"  required>
+          <input type="text" id="nome" name="nome" placeholder="Nome" required>
         </div>
         <div class="campo">
           <label for="tipo">Tipo:</label>
-            <select id="tipo" name="tipo"  required> 
-              <option value="1">Receita</option>
-              <option value="0">Despesa</option>
-            </select>
+          <select id="tipo" name="tipo" required>
+            <option value="1">Receita</option>
+            <option value="0">Despesa</option>
+          </select>
         </div>
         <div>
           <button type="button" id="cadastrar" onclick="CadastrarCategoria()">Cadastrar</button>
-          <button type="button" id="cancelar" onclick="Cancelar()" >Cancelar</button>
+          <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
         </div>
       </form>
     </div>
@@ -81,30 +84,30 @@
 
   <dialog id="Popup-editar-categoria">
     <div id="formulario" class="popup">
-        <h2 id="titulo-popup">Editar Categoria</h2>
-        <form id="editar-form">
-            <input type="hidden" id="editar-id" name="id">
-            <div class="campo">
-                <input type="text" id="editar-nome" name="nome" placeholder="Nome" required>
-            </div>
-            <div class="campo">
-                <label for="editar-tipo">Tipo:</label>
-                <select id="editar-tipo" name="tipo" required>
-                    <option value="1">Receita</option>
-                    <option value="0">Despesa</option>
-                </select>
-            </div>
-            <div>
-                <button type="button" id="salvar">Salvar</button>
-                <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
-            </div>
-        </form>
+      <h2 id="titulo-popup">Editar Categoria</h2>
+      <form id="editar-form">
+        <input type="hidden" id="editar-id" name="id">
+        <div class="campo">
+          <input type="text" id="editar-nome" name="nome" placeholder="Nome" required>
+        </div>
+        <div class="campo">
+          <label for="editar-tipo">Tipo:</label>
+          <select id="editar-tipo" name="tipo" required>
+            <option value="1">Receita</option>
+            <option value="0">Despesa</option>
+          </select>
+        </div>
+        <div>
+          <button type="button" id="salvar">Salvar</button>
+          <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
+        </div>
+      </form>
     </div>
-</dialog>
+  </dialog>
 
 
-   
-  
+
+
   <dialog id="Popup-apagar-categoria">
     <div id="formulario" class="popup">
       <h2 id="titulo-popup">Apagar Categoria</h2>
@@ -113,7 +116,7 @@
       <form action="#">
         <div>
           <button type="button" id="sim-apagar">Sim</button>
-          <button type="button" id="nao-apagar" onclick="Cancelar()" >Não</button>
+          <button type="button" id="nao-apagar" onclick="Cancelar()">Não</button>
         </div>
       </form>
     </div>
@@ -123,18 +126,19 @@
 
   <div class="table-css">
     <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Categoria</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
+      <thead>
+        <tr>
+          <th scope="col">Categoria</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
     </table>
   </div>
 
-       <script src="../public/categorias.js"></script>
+  <script src="../public/categorias.js"></script>
 </body>
+
 </html>

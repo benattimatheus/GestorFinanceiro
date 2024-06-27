@@ -181,7 +181,16 @@ function ExibirEditar(tipo, id) {
     } else if (tipo === "Despesa") {
         tipoNumerico = 0;
     }
-    populateSelectForEdit(tipoNumerico).then(() => {
+
+    const tabela = document.querySelector('#historico tbody');
+    const rows = tabela.getElementsByTagName('tr');
+    for (let row of rows) {
+        if (row.cells[0].textContent == id) {
+            categoriaSelecionada = row.cells[5].textContent; 
+            break;
+        }
+    }
+    populateSelectForEdit(tipoNumerico,categoriaSelecionada).then(() => {
         const tabela = document.querySelector('#historico tbody');
         const rows = tabela.getElementsByTagName('tr');
         for (let row of rows) {
@@ -189,7 +198,7 @@ function ExibirEditar(tipo, id) {
                 document.getElementById('editar-valor').value = row.cells[2].textContent.replace('R$ ', '');
                 document.getElementById('editar-datas').value = row.cells[3].textContent;
                 document.getElementById('editar-descricao').value = row.cells[4].textContent;
-                document.getElementById('editar-categoria').value = row.cells[5].dataset.id; 
+                document.getElementById('editar-categoria').value = row.cells[5].textContent; 
                 document.getElementById('editar-id').value = id;
                 break;
             }
@@ -197,7 +206,7 @@ function ExibirEditar(tipo, id) {
     });
 }
 
-async function populateSelectForEdit(tipoNumerico) {
+async function populateSelectForEdit(tipoNumerico, categoriaSelecionada) {
     const Caminho = '../src/controllers/RequestPopulateSelectorEdit.php';
     try {
         const resposta = await fetch(Caminho, {
@@ -209,18 +218,23 @@ async function populateSelectForEdit(tipoNumerico) {
         });
 
         const dados = await resposta.json();
-        console.log('Dados recebidos:', dados); // Adicione esta linha para depuração
+        console.log('Dados recebidos:', dados); 
+
         const select = document.getElementById('editar-categoria');
         select.innerHTML = '<option value="" disabled selected>Selecione uma categoria</option>';
+
         dados.forEach(item => {
-            let DadoBanco_convertido = Number(item.tipo);
-            if (DadoBanco_convertido === Number(tipoNumerico)) {
-                const option = document.createElement('option');
-                option.value = item.id;
-                option.text = item.categoria;
-                select.appendChild(option);
+            const option = document.createElement('option');
+            option.text = item.categoria;
+            option.value = item.id
+            
+            if (item.id === categoriaSelecionada) {
+                option.selected = true;
             }
+
+            select.appendChild(option);
         });
+
     } catch (error) {
         console.error('Erro:', error);
         const select = document.getElementById('editar-categoria');
@@ -228,45 +242,62 @@ async function populateSelectForEdit(tipoNumerico) {
     }
 }
 
-function SalvarEdicao() {
+async function salvarEdicao(event) {
+    event.preventDefault();
+
     const id = document.getElementById('editar-id').value;
     const valor = document.getElementById('editar-valor').value;
     const datas = document.getElementById('editar-datas').value;
     const descricao = document.getElementById('editar-descricao').value;
     const categoriaId = document.getElementById('editar-categoria').value;
-    const tipoNumerico = document.getElementById('tipo').value;
 
-    const data = {
-        id,
-        tipoNumerico,
-        valor,
-        datas,
-        descricao,
-        categoriaId,
-    };
-
-    const Caminho = '../src/controllers/RequestEditarTransacao.php';
-    fetch(Caminho, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Dados atualizados:', data);
-        // Close the popup and refresh the table
-        document.getElementById("Popup-editar-categoria").close();
-        location.reload();
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        // Display an error message to the user
-        alert('Erro ao atualizar dados');
-    });
+    const tabela = document.querySelector('#historico tbody');
+    const rows = tabela.getElementsByTagName('tr');
+    let tipo;
     
+    for (let row of rows) {
+        if (row.cells[0].textContent == id) {
+            const tipoTexto = row.cells[1].textContent;
+            if (tipoTexto === 'Receita') {
+                tipo = 1;
+            } else if (tipoTexto === 'Despesa') {
+                tipo = 0;
+            } else {
+                alert('Tipo de transação desconhecido: ' + tipoTexto);
+                return; 
+            }
+            break;
+        }
+    }
+    
+    const data = { id, tipo, valor, datas, descricao, categoria: categoriaId };
+    try {
+        const response = await fetch('/src/controllers/RequestEditarTransacao.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            const selectMes = document.getElementById('Mes');
+            const mesAtual = selectMes.value;
+            populateTable(mesAtual);
+            alert('Transação editada com sucesso!');
+            Cancelar(); 
+        } else {
+            alert('Erro ao atualizar a transação');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao atualizar a transação');
+    }
 }
+
+document.getElementById('editar-form').addEventListener('submit', salvarEdicao);
 
 // -------------------------Função para Exclusão de dados------------------------------
 
@@ -295,7 +326,7 @@ async function apagarTransacao(tipo, id) {
             const selectMes = document.getElementById('Mes');
             const mesAtual = selectMes.value;
             populateTable(mesAtual);
-            // alert('Transação apagada com sucesso!');
+            alert('Transação apagada com sucesso!');
             Cancelar();
         } else {
             alert('Erro ao apagar a transação, sem sucesso');

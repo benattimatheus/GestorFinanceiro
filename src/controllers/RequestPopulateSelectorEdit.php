@@ -2,13 +2,11 @@
 
 require_once __DIR__ .'/../database/Database.php';
 
-class RequestPopulateSelectorEdit
-{
-    public static function getOpcoes($tipo)
-    {
+class RequestPopulateSelectorEdit {
+    public static function getOpcoes($tipo) {
         try {
             $pdo = Database::getConn();
-            $stmt = $pdo->prepare("SELECT id, tipo , categoria FROM categoria WHERE tipo = :tipo");
+            $stmt = $pdo->prepare("SELECT id, categoria FROM categoria WHERE tipo = :tipo");
             $stmt->bindParam(':tipo', $tipo, PDO::PARAM_INT);
             $stmt->execute();
             $opcoes = $stmt->fetchAll(PDO::FETCH_ASSOC);

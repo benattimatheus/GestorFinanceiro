@@ -17,6 +17,12 @@ Tecnologias utilizadas: HTML, CSS, Bootstrap, Javascript, PHP, SQLite.
 ## BANCO DE DADOS
 
 *O aplicativo utiliza o PDO, para criar a conexão com o banco e uma abstração na camada de modelo que facilita muito o processo de desenvolvimento.*
+Para ativar o SQLite no PHP é preciso:
+1. Abra a pasta onde o PHP está instalado
+2. Procure pelo arquivo `PHP.INI`
+3. Abra esse arquivo na sua IDE
+4. Procure por ;extension = pdo_sqlite
+5. Exclua o ;
 
 ### SEPARÇÃO DE ARQUIVOS:
 - Todos controllers para gerenciamento de requisiçao devem estar na pasta (src/controller)
@@ -27,9 +33,9 @@ Tecnologias utilizadas: HTML, CSS, Bootstrap, Javascript, PHP, SQLite.
 - Views devem ficar na pasta (src/views)
 
 Desenvolvido por <br>
-[Julia Layz](https://br.linkedin.com/in/ "Julia Layz"). 23347625-2<br>
-[Leonardo Póss](https://br.linkedin.com/in/ "Leonardo Póss"). 22013563-2<br>
-[Luciano Franzoi](https://br.linkedin.com/in/ "Luciano Franzoi"). 22021768-2<br>
-[Matheus Benatti](https://br.linkedin.com/in/ "Matheus Benatti"). 22066197-2<br>
-[Phelipe Barreto](https://br.linkedin.com/in/ "Phelipe Barreto"). 22079206-2<br>
-[Rafaela Gonzatto](https://br.linkedin.com/in/ "Rafaela Gonzatto"). 23298343-2<br>
+[Julia Layz](https://github.com/JuliaLayz "Julia Layz"). 23347625-2<br>
+[Leonardo Póss](https://github.com/LeonardoPoss "Leonardo Póss"). 22013563-2<br>
+[Luciano Franzoi](https://github.com/Luciano-Franzoi-Filho "Luciano Franzoi"). 22021768-2<br>
+[Matheus Benatti](https://github.com/benattimatheus "Matheus Benatti"). 22066197-2<br>
+[Phelipe Barreto](https://github.com/phebarreto0512 "Phelipe Barreto"). 22079206-2<br>
+[Rafaela Gonzatto](https://github.com/rafaelagonzatto "Rafaela Gonzatto"). 23298343-2<br>

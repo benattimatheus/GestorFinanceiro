@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/704dd92f4c.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-U1W1KU6MKpug6j56e9ibq7oDY91v1drD3XKoMoZfkeQ7U166q9nN03VPqZ9zr3n" crossorigin="anonymous">
-    <link rel="stylesheet" href="/src/public/style.css">
-    <link rel="stylesheet" href="/src/public/styleSideBar.css">
-    <link rel="icon" href="/src/public/assets/logoIcon.ico" type="image/x-icon">
-    <title>Gestor Financeiro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/704dd92f4c.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-U1W1KU6MKpug6j56e9ibq7oDY91v1drD3XKoMoZfkeQ7U166q9nN03VPqZ9zr3n" crossorigin="anonymous">
+  <link rel="stylesheet" href="/src/public/style.css">
+  <link rel="stylesheet" href="/src/public/styleSideBar.css">
+  <link rel="icon" href="/src/public/assets/logoIcon.ico" type="image/x-icon">
+  <title>Gestor Financeiro</title>
 </head>
 <header>
 </header>
+
 <body>
   <div>
     <h1 id="titulo">Gestor Financeiro</h1>
@@ -92,7 +95,7 @@
         <form action="/src/controllers/app.php" method="POST">
           <div class="campo">
             <label for="tipo">Tipo:</label>
-            <select id="tipo" name="tipo" onchange="populateSelect()"> 
+            <select id="tipo" name="tipo" onchange="populateSelect()">
               <!-- Foi mudado os values das opções e adicionado o evento onchange para filtrar as categorias-->
               <option value="1">Receita</option>
               <option value="0">Despesa</option>
@@ -158,44 +161,41 @@
 
   <dialog id="Popup-editar-categoria">
     <div id="formulario" class="popup">
-        <h2 id="titulo-popup">Edição de Transações</h2>
-        <form id="editar-form">
-            <div class="campo">
-                <input placeholder="Valor:" type="number" id="editar-valor" name="valor" step="0.01" maxlength="20" required onkeyup="MascaraValor()">
-            </div>
-            <div class="campo">
-                <input type="date" id="editar-datas" name="datas" placeholder="Data:" required>
-            </div>
-            <div class="campo">
-                <input type="text" id="editar-descricao" name="descricao" placeholder="Descrição (opcional)">
-            </div>
-            <div class="campo">
-                <label for="editar-categoria">Categoria:</label>
-                <select id="editar-categoria" name="categoria" required>
-                    <option value="" disabled selected>Selecione uma categoria</option>
-                </select>
-            </div>
-            <div>
-                <button type="submit" id="cadastrar">Salvar</button>
-                <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
-            </div>
-        </form>
+      <h2 id="titulo-popup">Edição de Transações</h2>
+      <form id="editar-form">
+        <input type="hidden" id="editar-id" name="editar-id">
+        <div class="campo">
+          <input placeholder="Valor:" type="number" id="editar-valor" name="valor" step="0.01" maxlength="20" required
+            onkeyup="MascaraValor()">
+        </div>
+        <div class="campo">
+          <input type="date" id="editar-datas" name="datas" placeholder="Data:" required>
+        </div>
+        <div class="campo">
+          <input type="text" id="editar-descricao" name="descricao" placeholder="Descrição (opcional)">
+        </div>
+        <div class="campo">
+          <label for="editar-categoria">Categoria:</label>
+          <select id="editar-categoria" name="categoria" required>
+          </select>
+        </div>
+        <div>
+          <button type="submit" id="cadastrar">Salvar</button>
+          <button type="button" id="cancelar" onclick="Cancelar()">Cancelar</button>
+        </div>
+      </form>
     </div>
-</dialog>
-
-
-
-
+  </dialog>
 
   <dialog id="Popup-apagar-categoria">
-    <div id="formulario" class="popup">
+    <div id="formulario" class="popup2">
       <h2 id="titulo-popup">Apagar Transação</h2>
-      <h5 id="apagar-categoria-1">A transação será removida</h5>
-      <h5 id="apagar-categoria-2">Deseja mesmo apagar essa transação?</h5>
+      <h5 id="apagar">A transação será removida</h5>
+      <h5 id="apagar">Deseja mesmo apagar essa transação?</h5>
       <form action="#">
         <div>
           <button type="button" id="sim-apagar">Sim</button>
-          <button type="button" id="nao-apagar" onclick="Cancelar()" >Não</button>
+          <button type="button" id="nao-apagar" onclick="Cancelar()">Não</button>
         </div>
       </form>
     </div>
@@ -205,7 +205,8 @@
       const selectedMonth = document.getElementById('Mes').value;
       window.open(`/src/views/gerarPDF.html?mes=${selectedMonth}`, '_blank');
     }
-    </script>
+  </script>
   <script src="/src/public/app.js"></script>
 </body>
+
 </html>
