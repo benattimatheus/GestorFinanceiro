@@ -104,8 +104,8 @@ async function populateTable(mes) {
             const actionsCell = row.insertCell(6);
             actionsCell.classList.add('acoesJS');
             actionsCell.innerHTML = `
-                <button class="editar" type="button" onclick="ExibirEditar('${tipo}', ${item.id})">Editar</button>
-                <button class="excluir" type="button" onclick="ExibirApagar('${tipo}', ${item.id})">Excluir</button>
+                <i href="#" type="button" class="editar fa-solid fa-pencil" onclick="ExibirEditar('${tipo}', ${item.id})"></i>
+                <i href="#" type="button" class="excluir fa-solid fa-trash" onclick="ExibirApagar('${tipo}', ${item.id})"></i>
             `;
 
             if (tipo === 'Receita') {

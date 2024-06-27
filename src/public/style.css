@@ -284,33 +284,39 @@ button[id="nao-apagar"] {
     width: 120px;
 }
 
-.editar {
-    background-color: #15dd30;
-    font-size: 15px;
-    color: white;
+.editar,
+.fa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1fb332;
+    font-size: 20px;
     width: 60px;
     height: 25px;
-    border-radius: 7px;
     border: none;
     margin-right: 5px;
 }
 
-.excluir {
-    background-color: #dd1515;
-    font-size: 15px;
-    color: white;
+.excluir,
+.fa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b71919;
+    font-size: 20px;
     width: 60px;
     height: 25px;
-    border-radius: 7px;
     border: none;
 }
 
-.editar:hover {
+i.fa:hover{
     background-color: #1c9c2d;
+    color: #ffffff !important; 
 }
 
-.excluir:hover {
+i.fa:hover{
     background-color: #9e1d1d;
+    color: #ffffff !important; 
 }
 
 footer{
