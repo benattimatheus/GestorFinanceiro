@@ -26,20 +26,7 @@ h4[id="h4-2"]{
     margin-left: 38.5%;
 }
 
-.campo-email{
-    width: 40%;
-    height: 30px;
-    margin-left: 27%;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: none;
+.forms-email{
+    margin-left: 20%;
 }
 
-.campo-descricao{
-    width: 40%;
-    height: 80px;
-    margin-left: 27%;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: none;
-}
