@@ -208,12 +208,12 @@
       <img src="/src/public/assets/logo.png" class="logo-footer">
       <h6>Oi! Leu até aqui? Você se preocupa com os mínimos detalhes, mesmo. A gente também. 💜</h6>
     </div>
-<script>
-  function openPDFPage() {
-    const selectedMonth = document.getElementById('Mes').value;
-    window.open(/src/views/gerarPDF.html?mes=$:{selectedMonth}, '_blank');
-  }
-</script>
+    <script>
+      function openPdfPage() {
+        const selectedMonth = document.getElementById('Mes').value;
+        window.open(`/src/views/gerarPDF.html?mes=${selectedMonth}`, '_blank');
+      }
+    </script>
 <script src="/src/public/app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
