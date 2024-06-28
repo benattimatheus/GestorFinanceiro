@@ -209,9 +209,9 @@
       <h6>Oi! Leu até aqui? Você se preocupa com os mínimos detalhes, mesmo. A gente também. 💜</h6>
     </div>
 <script>
-  function openPdfPage() {
+  function openPDFPage() {
     const selectedMonth = document.getElementById('Mes').value;
-    window.open(/src/views/gerarPDF.html?mes=${selectedMonth}, '_blank');
+    window.open(/src/views/gerarPDF.html?mes=$:{selectedMonth}, '_blank');
   }
 </script>
 <script src="/src/public/app.js"></script>
